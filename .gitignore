@@ -1,4 +1,9 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
 .dist
+.DS_store
 config.py
 hw2main.py
 data.zip
