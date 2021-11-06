@@ -43,8 +43,7 @@ pyvenv.cfg
 
 # Project Files
 .dist
-config.py
-hw2main.py
 data.zip
 data/
 *.pth
+local_hw2main.py
