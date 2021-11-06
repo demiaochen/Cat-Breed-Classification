@@ -35,6 +35,9 @@ pyvenv.cfg
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# VSCode
+.vscode
+
 # Packages
 *.zip
 
