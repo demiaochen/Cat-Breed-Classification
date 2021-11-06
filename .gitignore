@@ -47,3 +47,4 @@ config.py
 hw2main.py
 data.zip
 data/
+*.pth
