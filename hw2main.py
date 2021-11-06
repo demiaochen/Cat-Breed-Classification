@@ -15,7 +15,7 @@ import sys
 from torch.utils.data import Dataset, random_split
 from config import device
 
-import zero01 as student
+import student
 
 # This class allows train/test split with different transforms
 class DatasetFromSubset(Dataset):
@@ -147,7 +147,7 @@ def main():
 
         sys.stdout.flush()
 
-    torch.save(net.state_dict(),'zero01.pth')
+    torch.save(net.state_dict(),'savedModel.pth')
     print("   Model saved to savedModel.pth")
         
 if __name__ == '__main__':
