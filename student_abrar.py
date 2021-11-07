@@ -48,34 +48,43 @@ def transform(mode):
 class Network(nn.Module):
     def __init__(self):
         super().__init__()
-        # input channel=3, output channel=18, kernel size=5
-        self.conv1 = nn.Conv2d(3, 18, 5)
-        # width after maxpool => (80+1-5)/2 = 38; input channel = 18, output channel = 54, kernel size = 5 
-        self.conv2 = nn.Conv2d(18, 54, 5)
-        # width after maxpool => (38+1-5)/2 = 17; input channel = 54
-        # flattened width = 54*17*17 = 15606
-        self.fc1 = nn.Linear(15606, 200)
-        self.fc2 = nn.Linear(200, 200)
-        self.fc3 = nn.Linear(200, 8) # output layer
+        self.conv1 = nn.Conv2d(3, 30, 5)
+        self.conv2 = nn.Conv2d(30, 120, 5)
+        self.conv3 = nn.Conv2d(120, 360, 5)
+        self.fc1 = nn.Linear(360*6*6, 500)
+        self.fc2 = nn.Linear(500, 500)
+        self.fc3 = nn.Linear(500, 8) # output layer
     def forward(self, x):
-        out = F.relu(self.conv1(x))
-        out = F.max_pool2d(out, 2)
-        out = F.relu(self.conv2(out))
-        out = F.max_pool2d(out, 2)
+        ###############
+        # CONV Layers #
+        ###############
+        out = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))
+        out = F.max_pool2d(F.relu(self.conv2(out)), (2, 2))
+        out = F.max_pool2d(F.relu(self.conv3(out)), (2, 2))
+        
         out = out.view(out.size(0), -1)
+        
+        ##########################
+        # Fully Connected Layers #
+        ##########################
         out = F.relu(self.fc1(out))
         out = F.relu(self.fc2(out))
+        
+        ################
+        # Output Layer #
+        ################
         predicted_output = F.log_softmax(self.fc3(out), dim=1)
         return predicted_output
 
 net = Network()
-
 ############################################################################
 ######      Specify the optimizer and loss function                   ######
 ############################################################################
-learning_rate = 0.01
-optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=0.5) # sgd first, will need to change to Adam
-loss_func = lambda output, target: F.nll_loss(output, target)
+learning_rate = 0.001
+# optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=0.5)
+optimizer = optim.Adam(net.parameters(), lr=learning_rate)
+# loss_func = F.nll_loss
+loss_func = nn.CrossEntropyLoss()
 
 ############################################################################
 ######  Custom weight initialization and lr scheduling are optional   ######
