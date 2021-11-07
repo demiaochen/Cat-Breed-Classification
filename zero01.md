@@ -6,7 +6,12 @@ networks: 4 cnn + 3 fc
 
 highest accuracy: 60%
 
-conclusion: very easy to overfit, performs better without softmax functions
+**conclusion**: 
+* very easy to overfit 
+* no benefits of using log_softmax *
+* naive cnn + fc + data augumentation hits limitations around 70% (a rough guess based on some 100MB models I trained)
+
+**TODO**: searching papers to look for a better image classfication model, to get insipirations to make a model with less than 13M num of parameters (we have 50MB size restriction on .pth file).
 
 ## parameters
 ```shell
