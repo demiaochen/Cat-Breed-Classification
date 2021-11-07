@@ -111,14 +111,14 @@ class Network(nn.Module):
         # x = x.view(x.size(0), -1)
         x = torch.flatten(x, start_dim=1)
         x = self.fc_layers(x)
-        return x
+        return F.log_softmax(x, dim=1)
 
 net = Network()
     
 ############################################################################
 ######      Specify the optimizer and loss function                   ######
 ############################################################################
-optimizer = optim.Adam(net.parameters(), lr=0.0005)
+optimizer = optim.Adam(net.parameters(), lr=0.0008)
 
 loss_func = nn.CrossEntropyLoss()
 

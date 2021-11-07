@@ -6,7 +6,7 @@ networks: 4 cnn + 3 fc
 
 highest accuracy: 60%
 
-conclusion: very easy to overfit
+conclusion: very easy to overfit, performs better without softmax functions
 ## result without softmax (lr=0.0005)
 
 ```shell
@@ -429,3 +429,7 @@ ep 73, loss: 180.46, 6400 train 46.80%, 1600 test 48.31%
 ep 74, loss: 179.58, 6400 train 47.64%, 1600 test 47.50%
 ep 75, loss: 177.18, 6400 train 49.95%, 1600 test 50.50%
 ```
+
+## result with log_softmax (lr=0.0008)
+
+best accuracy: 59%, then overfits
