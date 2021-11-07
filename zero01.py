@@ -76,8 +76,7 @@ class Network(nn.Module):
     def __init__(self):
         super().__init__()
         
-        self.cnn_layers = nn.Sequential
-        (
+        self.cnn_layers = nn.Sequential(
             nn.Conv2d(3, 32, kernel_size=5, stride=1, padding=1),
             nn.ReLU(),
 
@@ -93,8 +92,7 @@ class Network(nn.Module):
             nn.ReLU(),
         )
 
-        self.fc_layers = nn.Sequential
-        (
+        self.fc_layers = nn.Sequential(
             nn.Dropout(p=0.45), # reduce overfitting
             nn.Linear(32*19*19, 960),
             nn.ReLU(),
@@ -120,7 +118,7 @@ net = Network()
 ############################################################################
 ######      Specify the optimizer and loss function                   ######
 ############################################################################
-optimizer = optim.Adam(net.parameters(), lr = 0.0005)
+optimizer = optim.Adam(net.parameters(), lr=0.0005)
 
 loss_func = nn.CrossEntropyLoss()
 
