@@ -35,6 +35,9 @@ pyvenv.cfg
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# VSCode
+.vscode
+
 # Packages
 *.zip
 
@@ -43,9 +46,7 @@ pyvenv.cfg
 
 # Project Files
 .dist
-config.py
-hw2main.py
 data.zip
 data/
-local_hw2main.py
 *.pth
+local_hw2main.py
