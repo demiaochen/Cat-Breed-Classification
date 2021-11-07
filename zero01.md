@@ -7,6 +7,45 @@ networks: 4 cnn + 3 fc
 highest accuracy: 60%
 
 conclusion: very easy to overfit, performs better without softmax functions
+
+## parameters
+```shell
++---------------------+------------+
+|       Modules       | Parameters |
++---------------------+------------+
+| cnn_layers.0.weight |    2400    |
+|  cnn_layers.0.bias  |     32     |
+| cnn_layers.2.weight |   27648    |
+|  cnn_layers.2.bias  |     96     |
+| cnn_layers.5.weight |   51840    |
+|  cnn_layers.5.bias  |     60     |
+| cnn_layers.8.weight |   17280    |
+|  cnn_layers.8.bias  |     32     |
+|  fc_layers.1.weight |  11089920  |
+|   fc_layers.1.bias  |    960     |
+|  fc_layers.4.weight |   768000   |
+|   fc_layers.4.bias  |    800     |
+|  fc_layers.6.weight |    6400    |
+|   fc_layers.6.bias  |     8      |
++---------------------+------------+
+Total Trainable Params: 11,965,476
+```
+Function to generate parameter table
+```python
+    from prettytable import PrettyTable
+    def count_parameters(model):
+        table = PrettyTable(["Modules", "Parameters"])
+        total_params = 0
+        for name, parameter in model.named_parameters():
+            if not parameter.requires_grad: continue
+            param = parameter.numel()
+            table.add_row([name, param])
+            total_params+=param
+        print(table)
+        print(f"Total Trainable Params: {total_params}")
+        return total_params
+    count_parameters(net)
+```
 ## result without softmax (lr=0.0005)
 
 ```shell
