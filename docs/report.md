@@ -65,24 +65,71 @@ Layer 3 => input = 300 to 8 nodes in OUTPUT layer.
 
 ```shell
 Start training...
-ep 1, loss: 59.43, 6400 train 27.14%, 1600 test 25.87%
-ep 2, loss: 58.79, 6400 train 28.08%, 1600 test 25.69%
-ep 3, loss: 58.14, 6400 train 29.22%, 1600 test 25.44%
-ep 4, loss: 57.50, 6400 train 29.33%, 1600 test 28.50%
-ep 5, loss: 56.90, 6400 train 30.39%, 1600 test 29.62%
-ep 6, loss: 56.34, 6400 train 30.86%, 1600 test 30.25%
-ep 7, loss: 55.79, 6400 train 31.69%, 1600 test 30.50%
-ep 8, loss: 55.30, 6400 train 32.44%, 1600 test 31.06%
-ep 9, loss: 54.88, 6400 train 33.16%, 1600 test 31.25%
-ep 10, loss: 54.50, 6400 train 33.80%, 1600 test 31.94%
-[[134.   3.   0.  15.   0.   2.  12.  35.]
- [  5.  42.   0.   8.  37.  39.   4.  51.]
- [  8.  22.   0.  15.  63.  56.   7.  17.]
- [ 31.  12.   0.  78.  12.  46.  13.  17.]
- [  3.  37.   0.  29.  89.  54.   2.  13.]
- [  4.  29.   0.  54.  32.  57.  11.  20.]
- [ 41.   9.   0.  54.   8.  22.  23.  40.]
- [ 37.  23.   0.   7.   5.  11.  14.  88.]]
+ep 1, loss: 66.53, 6400 train 12.36%, 1600 test 13.94%
+ep 2, loss: 66.46, 6400 train 12.73%, 1600 test 13.81%
+ep 3, loss: 66.39, 6400 train 13.50%, 1600 test 13.75%
+ep 4, loss: 66.28, 6400 train 13.95%, 1600 test 14.19%
+ep 5, loss: 66.08, 6400 train 14.56%, 1600 test 14.75%
+ep 6, loss: 65.68, 6400 train 16.31%, 1600 test 17.25%
+ep 7, loss: 64.76, 6400 train 20.53%, 1600 test 21.00%
+ep 8, loss: 62.69, 6400 train 23.94%, 1600 test 22.00%
+ep 9, loss: 60.49, 6400 train 25.64%, 1600 test 21.94%
+ep 10, loss: 59.70, 6400 train 26.67%, 1600 test 21.56%
+[[128.   3.   0.  20.   0.   1.   0.  35.]
+ [ 12.  67.   0.  19.   1.  16.   0.  75.]
+ [ 20.  48.   0.  26.   7.  37.   0.  55.]
+ [ 64.  17.   0.  36.   1.  15.   0.  55.]
+ [  5.  75.   0.  18.   9.  36.   0.  66.]
+ [ 20.  43.   0.  39.   0.  17.   0.  87.]
+ [ 77.  11.   0.  43.   0.  15.   0.  60.]
+ [ 69.  38.   0.  18.   1.   7.   0.  88.]]
  ```
 
-ToDo: Changing Optimzer from SGD with Momentum to Adam?
+Changing Optimzer from SGD to Adam
+
+```shell
+Start training...
+ep 1, loss: 252.57, 6400 train 13.86%, 1600 test 13.88%
+ep 2, loss: 66.15, 6400 train 13.25%, 1600 test 13.25%
+ep 3, loss: 66.58, 6400 train 13.44%, 1600 test 13.12%
+ep 4, loss: 64.74, 6400 train 16.00%, 1600 test 19.31%
+ep 5, loss: 61.81, 6400 train 21.44%, 1600 test 24.31%
+ep 6, loss: 59.46, 6400 train 24.89%, 1600 test 27.50%
+ep 7, loss: 57.96, 6400 train 27.28%, 1600 test 28.94%
+ep 8, loss: 56.98, 6400 train 28.83%, 1600 test 30.56%
+ep 9, loss: 56.26, 6400 train 30.52%, 1600 test 30.69%
+ep 10, loss: 55.87, 6400 train 30.77%, 1600 test 31.44%
+[[138.   0.   0.   8.   0.   1.  23.  38.]
+ [  6.  44.  18.  18.  26.   8.  24.  35.]
+ [ 15.  31.  72.  15.  40.   3.  14.  18.]
+ [ 15.  14.  15.  33.  26.  10.  52.  32.]
+ [  3.  38.  48.  14.  47.   9.  15.  19.]
+ [  2.  34.  38.  35.  30.   7.  27.  37.]
+ [ 41.  11.   4.  20.   7.   1.  58.  53.]
+ [ 50.   9.   0.   9.   6.   0.  32. 104.]]
+```
+
+## 4th attempt
+We get better accuracy on training and test sets. Changing lr to 0.001, Loss Func to Cross Entropy Loss, 120 layer output 2nd conv layer, 360 layer output in 3rd conv layer and 500 nodes in 2 FC hidden layers (followed by output layer):
+
+```shell
+Start training...
+ep 1, loss: 60.39, 6400 train 23.06%, 1600 test 31.87%
+ep 2, loss: 53.13, 6400 train 35.50%, 1600 test 34.81%
+ep 3, loss: 49.55, 6400 train 41.05%, 1600 test 40.31%
+ep 4, loss: 46.79, 6400 train 45.11%, 1600 test 43.44%
+ep 5, loss: 43.90, 6400 train 49.14%, 1600 test 48.38%
+ep 6, loss: 42.09, 6400 train 50.56%, 1600 test 48.75%
+ep 7, loss: 37.29, 6400 train 56.91%, 1600 test 51.94%
+ep 8, loss: 33.38, 6400 train 62.50%, 1600 test 49.94%
+ep 9, loss: 29.11, 6400 train 67.20%, 1600 test 52.38%
+ep 10, loss: 26.82, 6400 train 69.38%, 1600 test 52.69%
+[[156.   3.   2.   5.   0.   0.  22.  18.]
+ [  1.  85.  13.   2.  16.  17.  44.  32.]
+ [ 15.  24.  86.  14.  15.  16.  13.   6.]
+ [ 46.   7.  14.  98.   5.  12.  26.   7.]
+ [  2.  49.  63.  10.  65.   3.  13.   5.]
+ [  1.   7.  14.  12.   1. 119.  32.   0.]
+ [ 21.  11.   2.   6.   1.   5. 128.   9.]
+ [ 49.  25.   2.   0.   3.   1.  15. 106.]]
+ ```
