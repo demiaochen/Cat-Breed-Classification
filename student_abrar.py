@@ -37,10 +37,23 @@ def transform(mode):
     You may specify different transforms for training and testing
     """
     if mode == 'train':
-        return transforms.ToTensor()
+        return transforms.Compose(
+            [
+                transforms.RandomHorizontalFlip(),
+                transforms.CenterCrop(60),
+                transforms.ToTensor(),
+                transforms.Normalize(mean=[0.4817, 0.4347, 0.3928], std=[0.2483, 0.2402, 0.2335])
+            ]
+        )
     elif mode == 'test':
-        return transforms.ToTensor()
-
+        return transforms.Compose(
+            [   
+                transforms.RandomHorizontalFlip(),
+                transforms.CenterCrop(60),
+                transforms.ToTensor(),
+                transforms.Normalize(mean=[0.4817, 0.4347, 0.3928], std=[0.2483, 0.2402, 0.2335])
+            ]
+        )
 
 ############################################################################
 ######   Define the Module to process the images and produce labels   ######
@@ -48,12 +61,16 @@ def transform(mode):
 class Network(nn.Module):
     def __init__(self):
         super().__init__()
-        self.conv1 = nn.Conv2d(3, 30, 5)
-        self.conv2 = nn.Conv2d(30, 120, 5)
-        self.conv3 = nn.Conv2d(120, 360, 5)
-        self.fc1 = nn.Linear(360*6*6, 500)
-        self.fc2 = nn.Linear(500, 500)
-        self.fc3 = nn.Linear(500, 8) # output layer
+        self.conv1 = nn.Conv2d(3, 30, kernel_size=5, padding=2)
+        self.conv2 = nn.Conv2d(30, 120, kernel_size=5)
+        self.conv3 = nn.Conv2d(120, 360, kernel_size=3)
+        #self.conv4 = nn.Conv2d(360, 540, kernel_size=3)
+        self.fc1 = nn.Linear(360*5*5, 1000)
+        self.fc2 = nn.Linear(1000, 1000)
+        self.fc3 = nn.Linear(1000, 8) # output layer
+        # Dropout
+        self.dropout = nn.Dropout(0.4)
+        
     def forward(self, x):
         ###############
         # CONV Layers #
@@ -61,14 +78,15 @@ class Network(nn.Module):
         out = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))
         out = F.max_pool2d(F.relu(self.conv2(out)), (2, 2))
         out = F.max_pool2d(F.relu(self.conv3(out)), (2, 2))
-        
+        #out = F.max_pool2d(F.relu(self.conv4(out)), (2, 2))
+        #print(out.shape)
         out = out.view(out.size(0), -1)
         
         ##########################
         # Fully Connected Layers #
         ##########################
-        out = F.relu(self.fc1(out))
-        out = F.relu(self.fc2(out))
+        out = self.dropout(F.relu(self.fc1(out)))
+        out = self.dropout(F.relu(self.fc2(out)))
         
         ################
         # Output Layer #
