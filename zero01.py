@@ -18,7 +18,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 import torchvision
-import torchvision.transforms as transforms
+import torchvision.transforms as T
 
 """
    Answer to Question:
@@ -40,28 +40,32 @@ def transform(mode):
     # channel size = 3
 
     if mode == 'train':
-        return transforms.Compose(
+        return T.Compose(
             [   
-                # ref: https://d2l.ai/chapter_computer-vision/kaggle-dog.html
-
-                # Randomly crop the image to obtain an image with an area of 0.08 to 1 of
-                # the original area and height-to-width ratio between 3/4 and 4/3. Then,
-                # scale the image to create a new 224 x 224 image
-                transforms.RandomResizedCrop(224, scale=(0.08, 1.0),
-                                                        ratio=(3.0 / 4.0, 4.0 / 3.0)),
-                transforms.RandomHorizontalFlip(),
-                # Randomly change the brightness, contrast, and saturation
-                transforms.ColorJitter(brightness=0.4, contrast=0.4,
-                                                saturation=0.4),
-                # Add random noise
-                transforms.ToTensor(),
+                T.RandomHorizontalFlip(),
+                T.RandomRotation((-10,10)),
+                T.ColorJitter(brightness=0.4, contrast=0.3, saturation=0.3, hue=0.2),
+                T.RandomPosterize(bits=3, p=0.4),
+                T.RandomEqualize(p=0.1),
+                T.RandomGrayscale(p=0.1),
+                T.RandomPerspective(distortion_scale=0.05, p=0.1, fill=0),
+                # T.RandomErasing(),
+                # T.RandomAffine(degrees=(30, 70), translate=(0.1, 0.3), scale=(0.5, 0.75)),
+                # T.RandomInvert(p=0.05),
+                T.ToTensor(),
                 # Standardize each channel of the image
-                transforms.Normalize([0.485, 0.456, 0.406],
-                                                [0.229, 0.224, 0.225])
+                # T.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
             ]
         )
     elif mode == 'test':
-        return transforms.ToTensor()
+        return T.Compose(
+            [   
+                T.ToTensor(),
+                # Standardize each channel of the image
+                # transforms.Normalize([0.485, 0.456, 0.406],
+                #                                 [0.229, 0.224, 0.225]),
+            ]
+        )
 
 
 ############################################################################
@@ -71,53 +75,44 @@ class Network(nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.cnn_layers = nn.Sequential(
-            nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1),
+        
+        self.cnn_layers = nn.Sequential
+        (
+            nn.Conv2d(3, 32, kernel_size=5, stride=1, padding=1),
             nn.ReLU(),
 
-            nn.Conv2d(32, 128, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
-
-            nn.Conv2d(128, 512, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(32, 96, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=3, stride=2),
 
-            nn.Conv2d(512, 800, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
-            nn.MaxPool2d(kernel_size=3, stride=2),
-
-            nn.Conv2d(800, 400, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(96, 60, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
 
-            nn.Conv2d(400, 200, kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(60, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
-
-            nn.Conv2d(200, 150, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
-            nn.MaxPool2d(kernel_size=2, stride=2),
         )
-        self.fc_layers = nn.Sequential(
-            nn.Linear(150*13*13, 5200),
+
+        self.fc_layers = nn.Sequential
+        (
+            nn.Dropout(p=0.45), # reduce overfitting
+            nn.Linear(32*19*19, 960),
             nn.ReLU(),
 
-            nn.Linear(5200 , 4800),
+            nn.Dropout(p=0.45), # reduce overfitting
+            nn.Linear(960 , 800),
             nn.ReLU(),
 
-            nn.Linear(4800 , 2400),
-            nn.ReLU(),
-
-            nn.Linear(2400 , 300),
-            nn.ReLU(),
-
-            nn.Linear(300 , 8),
+            nn.Linear(800 , 8),
         )
         
-    def forward(self, input):
-        #print(input.shape)
-        x = self.cnn_layers(input)
-        #print(x.shape)
-        x = self.fc_layers(input)
+    def forward(self, x):
+        # print(x.shape)
+        x = self.cnn_layers(x)
+        # print(x.shape)
+        # x = x.view(x.size(0), -1)
+        x = torch.flatten(x, start_dim=1)
+        x = self.fc_layers(x)
         return x
 
 net = Network()
@@ -125,7 +120,7 @@ net = Network()
 ############################################################################
 ######      Specify the optimizer and loss function                   ######
 ############################################################################
-optimizer = optim.Adam(net.parameters(), lr = 0.05)
+optimizer = optim.Adam(net.parameters(), lr = 0.0005)
 
 loss_func = nn.CrossEntropyLoss()
 
@@ -147,5 +142,5 @@ scheduler = None
 ############################################################################
 dataset = "./data"
 train_val_split = 0.8  # 0.8 for testing, 1.0 for final submitting
-batch_size = 32
+batch_size = 64
 epochs = 100
