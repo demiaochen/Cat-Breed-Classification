@@ -1,9 +1,15 @@
 ## report
+
 model size: 45.6 MB
+
 networks: 4 cnn + 3 fc
+
 highest accuracy: 60%
+
 conclusion: very easy to overfit
 ## result
+
+```shell
 Start training...
 ep 1, loss: 192.91, 6400 train 21.28%, 1600 test 29.12%
 ep 2, loss: 181.45, 6400 train 26.88%, 1600 test 32.56%
@@ -100,3 +106,4 @@ ep 50, loss: 56.61, 6400 train 80.58%, 1600 test 59.19%
  [ 15.  10.   0.   7.   3.   2. 152.  11.]
  [ 20.  17.   4.   1.   6.   0.  20. 153.]]
    Model saved to checkModel.pth
+```
