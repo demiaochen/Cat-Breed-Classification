@@ -328,6 +328,20 @@ ep 50, loss: 2.29, 6400 train 97.72%, 1600 test 55.12%
  [ 22.  22.   4.  14.   5.   2.  21. 127.]]
 ```
 
+Network(
+  (conv1): Conv2d(3, 30, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+  (conv2): Conv2d(30, 120, kernel_size=(5, 5), stride=(1, 1))
+  (conv3): Conv2d(120, 360, kernel_size=(3, 3), stride=(1, 1))
+  (conv4): Conv2d(360, 540, kernel_size=(3, 3), stride=(1, 1))
+  (fc1): Linear(in_features=540, out_features=1000, bias=True)
+  (fc2): Linear(in_features=1000, out_features=1000, bias=True)
+  (fc3): Linear(in_features=1000, out_features=8, bias=True)
+  (dropout): Dropout(p=0.4, inplace=False)
+)
+
+lr = 
+
+
 ### Read later
 
 https://towardsdatascience.com/improves-cnn-performance-by-applying-data-transformation-bf86b3f4cef4
