@@ -12,7 +12,7 @@ model 1: kernel size 5 3 3 3 -> 71%
 
 model 2: change kernel size to 3 2 2 2 -> 69%
 
-model 3: kernel size 5 3 3 3 and add batchnorm -> 77.88%
+model 3: kernel size 5 2 2 2 and add batchnorm -> 78%
 
 
 ## details
