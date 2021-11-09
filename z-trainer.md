@@ -33,6 +33,8 @@ model 6: model 5 but avgpool -> 72%
 
 **model 8**: model 3 modified: decreasing dropout -> 79%
 
+**model 9**: model 3 modified: decreasing dropout with higher dropout and fc paras -> 78%
+
 ## details
 
 ### model 3
@@ -2002,4 +2004,356 @@ ep 320, loss: 11.89, 6400 train 96.06%, 1600 test 78.50%
  [ 15.  12.   7.  10.   5.  21. 113.   3.]
  [  8.   8.   6.   6.   7.   4.   3. 169.]]
    Model saved to checkModel.pth
+```
+
+### model 9
+
+``` shell
+torch.Size([3, 80, 80])
+batch size: 64
+learning rate: 0.0004
+train_val_split: 0.8
+epochs: 1000
+Compose(
+    RandomResizedCrop(size=(80, 80), scale=(0.75, 1.0), ratio=(0.75, 1.3), interpolation=bilinear)
+    RandomHorizontalFlip(p=0.5)
+    RandomRotation(degrees=[-10.0, 10.0], interpolation=nearest, expand=False, fill=0)
+    ColorJitter(brightness=[0.6, 1.4], contrast=[0.7, 1.3], saturation=[0.7, 1.3], hue=[-0.2, 0.2])
+    RandomPosterize(bits=3,p=0.4)
+    RandomEqualize(p=0.1)
+    RandomGrayscale(p=0.1)
+    RandomPerspective(p=0.1)
+    ToTensor()
+)
+SimpleCNN(
+  (conv_layers): Sequential(
+    (0): Conv2d(3, 30, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (1): BatchNorm2d(30, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (4): Conv2d(30, 120, kernel_size=(3, 3), stride=(1, 1))
+    (5): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (6): ReLU()
+    (7): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (8): Conv2d(120, 360, kernel_size=(3, 3), stride=(1, 1))
+    (9): BatchNorm2d(360, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): ReLU()
+    (11): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (12): Conv2d(360, 540, kernel_size=(3, 3), stride=(1, 1))
+    (13): BatchNorm2d(540, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (14): ReLU()
+    (15): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  )
+  (fc_layers): Sequential(
+    (0): Dropout(p=0.7, inplace=False)
+    (1): Linear(in_features=4860, out_features=1600, bias=True)
+    (2): BatchNorm1d(1600, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): ReLU()
+    (4): Dropout(p=0.5, inplace=False)
+    (5): Linear(in_features=1600, out_features=1000, bias=True)
+    (6): BatchNorm1d(1000, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): ReLU()
+    (8): Dropout(p=0.3, inplace=False)
+    (9): Linear(in_features=1000, out_features=8, bias=True)
+  )
+)
++-----------------------+------------+
+|        Modules        | Parameters |
++-----------------------+------------+
+|  conv_layers.0.weight |    2250    |
+|   conv_layers.0.bias  |     30     |
+|  conv_layers.1.weight |     30     |
+|   conv_layers.1.bias  |     30     |
+|  conv_layers.4.weight |   32400    |
+|   conv_layers.4.bias  |    120     |
+|  conv_layers.5.weight |    120     |
+|   conv_layers.5.bias  |    120     |
+|  conv_layers.8.weight |   388800   |
+|   conv_layers.8.bias  |    360     |
+|  conv_layers.9.weight |    360     |
+|   conv_layers.9.bias  |    360     |
+| conv_layers.12.weight |  1749600   |
+|  conv_layers.12.bias  |    540     |
+| conv_layers.13.weight |    540     |
+|  conv_layers.13.bias  |    540     |
+|   fc_layers.1.weight  |  7776000   |
+|    fc_layers.1.bias   |    1600    |
+|   fc_layers.2.weight  |    1600    |
+|    fc_layers.2.bias   |    1600    |
+|   fc_layers.5.weight  |  1600000   |
+|    fc_layers.5.bias   |    1000    |
+|   fc_layers.6.weight  |    1000    |
+|    fc_layers.6.bias   |    1000    |
+|   fc_layers.9.weight  |    8000    |
+|    fc_layers.9.bias   |     8      |
++-----------------------+------------+
+Total Trainable Params: 11568008
+Start training...
+ep 1, loss: 189.35, 6400 train 27.16%, 1600 test 37.19%
+ep 2, loss: 170.17, 6400 train 35.28%, 1600 test 45.06%
+ep 3, loss: 158.05, 6400 train 40.03%, 1600 test 47.25%
+ep 4, loss: 153.35, 6400 train 41.81%, 1600 test 30.06%
+ep 5, loss: 145.52, 6400 train 46.22%, 1600 test 34.00%
+ep 6, loss: 142.38, 6400 train 47.31%, 1600 test 43.19%
+ep 7, loss: 138.55, 6400 train 48.98%, 1600 test 40.12%
+ep 8, loss: 134.82, 6400 train 50.59%, 1600 test 43.31%
+ep 9, loss: 131.74, 6400 train 51.88%, 1600 test 48.50%
+ep 10, loss: 127.92, 6400 train 53.36%, 1600 test 53.25%
+[[172.   0.   1.  11.   1.   2.   6.   6.]
+ [  2.  54.   4.  22.   7.  55.  26.  39.]
+ [ 16.   3.  56.  52.  18.  46.  11.   7.]
+ [ 33.   2.   1. 140.   0.  14.   9.   2.]
+ [  5.  12.  20.  66.  65.  14.   6.  12.]
+ [  1.   0.   0.  25.   0. 147.   4.   2.]
+ [ 27.   1.   0.  24.   0.  43. 109.   7.]
+ [ 54.   8.   1.   9.   3.   2.   6. 109.]]
+   Model saved to checkModel.pth
+ep 11, loss: 127.13, 6400 train 52.67%, 1600 test 46.00%
+ep 12, loss: 124.36, 6400 train 54.56%, 1600 test 42.06%
+ep 13, loss: 123.35, 6400 train 54.95%, 1600 test 37.81%
+ep 14, loss: 121.70, 6400 train 55.30%, 1600 test 53.94%
+ep 15, loss: 117.92, 6400 train 57.58%, 1600 test 57.06%
+ep 16, loss: 117.12, 6400 train 58.00%, 1600 test 50.31%
+ep 17, loss: 114.62, 6400 train 58.17%, 1600 test 39.88%
+ep 18, loss: 112.76, 6400 train 59.39%, 1600 test 56.00%
+ep 19, loss: 110.30, 6400 train 60.50%, 1600 test 54.06%
+ep 20, loss: 108.12, 6400 train 60.53%, 1600 test 57.00%
+[[113.   0.   0.  59.   2.   2.   0.  23.]
+ [  1.  87.  10.  22.  22.  31.   0.  36.]
+ [ 10.   7.  95.  45.  30.  14.   1.   7.]
+ [  4.   0.   2. 179.   6.   5.   0.   5.]
+ [  0.   5.  20.  31. 130.   8.   0.   6.]
+ [  0.   1.   2.  31.   3. 140.   0.   2.]
+ [ 16.   4.   4.  82.   1.  66.  20.  18.]
+ [  6.  12.   0.  18.   3.   5.   0. 148.]]
+   Model saved to checkModel.pth
+ep 21, loss: 107.56, 6400 train 61.55%, 1600 test 49.56%
+ep 22, loss: 106.01, 6400 train 61.98%, 1600 test 55.62%
+ep 23, loss: 105.54, 6400 train 61.88%, 1600 test 55.56%
+ep 24, loss: 102.91, 6400 train 62.80%, 1600 test 54.81%
+ep 25, loss: 102.41, 6400 train 63.31%, 1600 test 51.50%
+ep 26, loss: 99.28, 6400 train 64.95%, 1600 test 58.81%
+ep 27, loss: 101.70, 6400 train 63.34%, 1600 test 57.50%
+ep 28, loss: 96.97, 6400 train 65.00%, 1600 test 62.19%
+ep 29, loss: 95.50, 6400 train 65.22%, 1600 test 57.69%
+ep 30, loss: 97.54, 6400 train 65.05%, 1600 test 60.38%
+[[150.   0.   0.  35.   4.   2.   0.   8.]
+ [  1.  60.   3.  19.  35.  65.   1.  25.]
+ [ 11.   3.  90.  33.  34.  29.   2.   7.]
+ [  5.   1.   3. 173.   5.  14.   0.   0.]
+ [  0.   1.  14.  24. 146.  11.   1.   3.]
+ [  1.   0.   0.  16.   4. 157.   0.   1.]
+ [ 30.   5.   2.  36.   6.  77.  48.   7.]
+ [ 15.   9.   0.  12.   9.   5.   0. 142.]]
+   Model saved to checkModel.pth
+ep 31, loss: 94.75, 6400 train 66.22%, 1600 test 54.94%
+ep 32, loss: 93.40, 6400 train 67.48%, 1600 test 64.50%
+ep 33, loss: 92.26, 6400 train 66.77%, 1600 test 65.50%
+ep 34, loss: 89.96, 6400 train 67.92%, 1600 test 58.88%
+ep 35, loss: 90.00, 6400 train 67.92%, 1600 test 61.19%
+ep 36, loss: 88.45, 6400 train 68.64%, 1600 test 62.56%
+ep 37, loss: 88.31, 6400 train 68.80%, 1600 test 59.88%
+ep 38, loss: 86.74, 6400 train 69.41%, 1600 test 64.12%
+ep 39, loss: 85.33, 6400 train 69.53%, 1600 test 55.06%
+ep 40, loss: 86.63, 6400 train 69.20%, 1600 test 62.88%
+[[157.   0.   0.  21.   2.   2.   0.  17.]
+ [  0.  91.   1.  18.  14.  36.   1.  48.]
+ [ 16.   7.  72.  44.  32.  25.   3.  10.]
+ [ 10.   0.   0. 175.   3.   6.   0.   7.]
+ [  1.   8.   8.  37. 127.  12.   1.   6.]
+ [  1.   1.   0.  20.   2. 152.   0.   3.]
+ [ 47.   7.   0.  34.   2.  39.  63.  19.]
+ [  9.   7.   0.   2.   3.   2.   0. 169.]]
+   Model saved to checkModel.pth
+ep 41, loss: 84.52, 6400 train 70.72%, 1600 test 61.50%
+ep 42, loss: 83.61, 6400 train 70.42%, 1600 test 64.25%
+ep 43, loss: 84.08, 6400 train 70.59%, 1600 test 68.31%
+ep 44, loss: 83.95, 6400 train 70.47%, 1600 test 64.50%
+ep 45, loss: 79.47, 6400 train 71.88%, 1600 test 66.06%
+ep 46, loss: 79.69, 6400 train 71.59%, 1600 test 68.19%
+ep 47, loss: 79.80, 6400 train 71.70%, 1600 test 66.31%
+ep 48, loss: 79.90, 6400 train 72.16%, 1600 test 69.38%
+ep 49, loss: 77.30, 6400 train 72.70%, 1600 test 61.00%
+ep 50, loss: 79.27, 6400 train 72.38%, 1600 test 57.75%
+[[ 94.   0.   1.  71.   5.  10.   0.  18.]
+ [  0.  54.   9.  16.  27.  80.   0.  23.]
+ [  2.   1. 115.  38.  17.  27.   1.   8.]
+ [  1.   0.   3. 178.   2.  17.   0.   0.]
+ [  0.   1.  19.  27. 134.  15.   0.   4.]
+ [  0.   0.   0.  12.   2. 164.   0.   1.]
+ [  8.   4.   3.  56.   3. 103.  25.   9.]
+ [  4.   5.   0.  14.   7.   2.   0. 160.]]
+   Model saved to checkModel.pth
+ep 51, loss: 76.52, 6400 train 72.45%, 1600 test 56.19%
+ep 52, loss: 76.48, 6400 train 72.56%, 1600 test 62.69%
+ep 53, loss: 75.86, 6400 train 73.25%, 1600 test 69.00%
+ep 54, loss: 73.84, 6400 train 73.25%, 1600 test 69.69%
+ep 55, loss: 75.13, 6400 train 73.05%, 1600 test 69.94%
+ep 56, loss: 73.46, 6400 train 73.78%, 1600 test 67.19%
+ep 57, loss: 71.04, 6400 train 74.19%, 1600 test 65.12%
+ep 58, loss: 71.61, 6400 train 74.72%, 1600 test 65.31%
+ep 59, loss: 70.65, 6400 train 74.88%, 1600 test 65.62%
+ep 60, loss: 70.73, 6400 train 74.92%, 1600 test 70.69%
+[[167.   0.   0.  16.   4.   4.   1.   7.]
+ [  2. 115.   1.   8.   8.  41.  11.  23.]
+ [ 13.   8.  91.  25.  24.  29.  10.   9.]
+ [ 10.   1.   1. 167.   2.  15.   2.   3.]
+ [  2.   8.   5.  17. 142.  17.   3.   6.]
+ [  0.   0.   0.   8.   2. 164.   2.   3.]
+ [ 25.   9.   0.  19.   1.  32. 124.   1.]
+ [ 12.   9.   0.   6.   1.   2.   1. 161.]]
+   Model saved to checkModel.pth
+ep 61, loss: 71.00, 6400 train 75.08%, 1600 test 71.69%
+ep 62, loss: 69.92, 6400 train 74.89%, 1600 test 70.69%
+ep 63, loss: 70.67, 6400 train 74.97%, 1600 test 73.00%
+ep 64, loss: 67.64, 6400 train 76.03%, 1600 test 60.31%
+ep 65, loss: 66.08, 6400 train 76.95%, 1600 test 67.50%
+ep 66, loss: 66.52, 6400 train 76.50%, 1600 test 71.62%
+ep 67, loss: 66.71, 6400 train 76.31%, 1600 test 61.75%
+ep 68, loss: 66.23, 6400 train 76.70%, 1600 test 66.19%
+ep 69, loss: 63.50, 6400 train 77.22%, 1600 test 68.25%
+ep 70, loss: 65.23, 6400 train 76.53%, 1600 test 69.88%
+[[146.   0.   0.  19.   4.   2.   3.  25.]
+ [  0.  97.   4.  14.   6.  27.   3.  58.]
+ [  5.   3. 114.  30.  14.  24.   6.  13.]
+ [  5.   1.   1. 172.   3.   9.   0.  10.]
+ [  0.  10.   9.  25. 137.  10.   1.   8.]
+ [  1.   1.   1.   5.   2. 163.   1.   5.]
+ [ 13.   7.   0.  26.   0.  36. 113.  16.]
+ [  6.   2.   0.   5.   1.   2.   0. 176.]]
+   Model saved to checkModel.pth
+ep 71, loss: 63.76, 6400 train 77.45%, 1600 test 71.88%
+ep 72, loss: 64.82, 6400 train 77.55%, 1600 test 69.38%
+ep 73, loss: 61.84, 6400 train 78.12%, 1600 test 64.56%
+ep 74, loss: 63.36, 6400 train 77.77%, 1600 test 68.81%
+ep 75, loss: 63.74, 6400 train 77.42%, 1600 test 68.38%
+ep 76, loss: 62.50, 6400 train 78.00%, 1600 test 73.06%
+ep 77, loss: 60.78, 6400 train 78.89%, 1600 test 69.62%
+ep 78, loss: 61.13, 6400 train 78.48%, 1600 test 63.75%
+ep 79, loss: 60.68, 6400 train 78.16%, 1600 test 68.88%
+ep 80, loss: 59.85, 6400 train 78.66%, 1600 test 72.75%
+[[170.   0.   1.  13.   1.   2.   9.   3.]
+ [  1.  92.   1.  15.  16.  38.  30.  16.]
+ [  8.   5. 115.  32.  10.  23.  10.   6.]
+ [ 11.   0.   1. 173.   2.  10.   4.   0.]
+ [  2.   3.   9.  30. 137.  15.   2.   2.]
+ [  0.   0.   0.   8.   1. 166.   4.   0.]
+ [ 12.   7.   0.  17.   1.  17. 156.   1.]
+ [ 17.   6.   0.   8.   3.   2.   1. 155.]]
+   Model saved to checkModel.pth
+ep 81, loss: 58.46, 6400 train 79.45%, 1600 test 74.56%
+ep 82, loss: 60.32, 6400 train 78.20%, 1600 test 72.00%
+ep 83, loss: 58.42, 6400 train 79.62%, 1600 test 65.81%
+ep 84, loss: 57.04, 6400 train 79.62%, 1600 test 73.00%
+ep 85, loss: 56.90, 6400 train 79.58%, 1600 test 69.94%
+ep 86, loss: 57.93, 6400 train 79.20%, 1600 test 67.25%
+ep 87, loss: 56.89, 6400 train 79.39%, 1600 test 77.56%
+ep 88, loss: 56.08, 6400 train 80.22%, 1600 test 71.25%
+ep 89, loss: 55.88, 6400 train 79.89%, 1600 test 71.19%
+ep 90, loss: 56.39, 6400 train 79.34%, 1600 test 70.06%
+[[142.   1.   1.  34.   3.   6.   4.   8.]
+ [  0. 121.   1.  10.  12.  42.   7.  16.]
+ [ 10.   7. 105.  26.  12.  37.   4.   8.]
+ [  2.   2.   0. 176.   2.  18.   0.   1.]
+ [  1.   9.   9.  23. 134.  20.   1.   3.]
+ [  0.   0.   1.   5.   0. 172.   1.   0.]
+ [ 13.  11.   0.  28.   1.  47. 109.   2.]
+ [  7.  10.   0.   7.   2.   4.   0. 162.]]
+   Model saved to checkModel.pth
+ep 91, loss: 55.71, 6400 train 80.05%, 1600 test 68.19%
+ep 92, loss: 55.16, 6400 train 80.88%, 1600 test 70.38%
+ep 93, loss: 53.83, 6400 train 80.80%, 1600 test 71.44%
+ep 94, loss: 54.05, 6400 train 80.38%, 1600 test 70.88%
+ep 95, loss: 54.99, 6400 train 80.75%, 1600 test 74.88%
+ep 96, loss: 51.64, 6400 train 81.67%, 1600 test 73.00%
+ep 97, loss: 53.57, 6400 train 80.86%, 1600 test 72.12%
+ep 98, loss: 50.10, 6400 train 82.31%, 1600 test 72.31%
+ep 99, loss: 53.67, 6400 train 81.44%, 1600 test 71.88%
+ep 100, loss: 51.74, 6400 train 81.59%, 1600 test 62.00%
+[[146.   0.   0.  40.   0.   3.   0.  10.]
+ [  0.  69.   1.  27.   4.  79.   1.  28.]
+ [  8.   0.  98.  42.   3.  44.   3.  11.]
+ [  2.   1.   0. 186.   0.  11.   0.   1.]
+ [  2.   3.   6.  51. 109.  25.   0.   4.]
+ [  0.   0.   0.  15.   0. 164.   0.   0.]
+ [ 25.   2.   0.  65.   0.  52.  58.   9.]
+ [  9.   6.   0.  12.   0.   3.   0. 162.]]
+   Model saved to checkModel.pth
+ep 101, loss: 52.58, 6400 train 81.09%, 1600 test 71.44%
+ep 102, loss: 50.69, 6400 train 81.92%, 1600 test 67.81%
+ep 103, loss: 49.80, 6400 train 82.22%, 1600 test 74.31%
+ep 104, loss: 49.44, 6400 train 82.27%, 1600 test 73.75%
+ep 105, loss: 49.33, 6400 train 82.42%, 1600 test 74.62%
+ep 106, loss: 49.29, 6400 train 82.45%, 1600 test 74.31%
+ep 107, loss: 48.86, 6400 train 82.83%, 1600 test 73.69%
+ep 108, loss: 50.17, 6400 train 82.34%, 1600 test 72.31%
+ep 109, loss: 47.19, 6400 train 83.22%, 1600 test 72.38%
+ep 110, loss: 48.66, 6400 train 83.03%, 1600 test 74.56%
+[[165.   1.   0.  15.   4.   4.   5.   5.]
+ [  1. 131.   0.   5.  18.  39.  10.   5.]
+ [  9.   5. 111.  18.  25.  29.   8.   4.]
+ [  6.   1.   2. 170.   6.  16.   0.   0.]
+ [  0.   4.   1.  10. 166.  17.   2.   0.]
+ [  0.   2.   0.   3.   2. 170.   2.   0.]
+ [ 19.  12.   2.  13.   1.  32. 131.   1.]
+ [ 10.  15.   0.   8.   4.   5.   1. 149.]]
+   Model saved to checkModel.pth
+ep 111, loss: 48.56, 6400 train 82.59%, 1600 test 72.75%
+ep 112, loss: 47.69, 6400 train 82.92%, 1600 test 72.81%
+ep 113, loss: 45.95, 6400 train 83.91%, 1600 test 74.56%
+ep 114, loss: 47.69, 6400 train 82.81%, 1600 test 75.25%
+ep 115, loss: 45.83, 6400 train 83.94%, 1600 test 74.44%
+ep 116, loss: 47.70, 6400 train 82.64%, 1600 test 74.81%
+ep 117, loss: 45.08, 6400 train 84.36%, 1600 test 69.75%
+ep 118, loss: 45.69, 6400 train 83.89%, 1600 test 74.69%
+ep 119, loss: 45.21, 6400 train 83.70%, 1600 test 75.19%
+ep 120, loss: 44.46, 6400 train 84.41%, 1600 test 72.81%
+[[174.   0.   0.  12.   5.   1.   2.   5.]
+ [  0. 131.   0.  11.  16.  20.  13.  18.]
+ [ 11.   8. 101.  26.  34.  14.   9.   6.]
+ [ 15.   0.   0. 175.   7.   3.   1.   0.]
+ [  2.  11.   2.  16. 162.   3.   2.   2.]
+ [  1.   2.   1.  22.   3. 143.   5.   2.]
+ [ 31.  12.   1.  24.   2.  10. 130.   1.]
+ [ 21.   8.   0.  11.   2.   1.   0. 149.]]
+   Model saved to checkModel.pth
+ep 121, loss: 44.12, 6400 train 84.16%, 1600 test 76.25%
+ep 122, loss: 46.05, 6400 train 83.78%, 1600 test 74.06%
+ep 123, loss: 45.14, 6400 train 84.22%, 1600 test 72.44%
+ep 124, loss: 44.97, 6400 train 84.12%, 1600 test 75.31%
+ep 125, loss: 42.70, 6400 train 84.45%, 1600 test 73.62%
+ep 126, loss: 42.06, 6400 train 84.41%, 1600 test 72.31%
+ep 127, loss: 43.40, 6400 train 84.78%, 1600 test 71.06%
+ep 128, loss: 41.67, 6400 train 85.20%, 1600 test 73.50%
+ep 129, loss: 40.41, 6400 train 84.83%, 1600 test 76.12%
+ep 130, loss: 43.06, 6400 train 84.66%, 1600 test 73.06%
+[[163.   0.   0.  16.   5.   6.   1.   8.]
+ [  0. 119.   3.  10.   4.  37.   0.  36.]
+ [  6.   6. 129.  22.  10.  25.   5.   6.]
+ [  8.   1.   0. 171.   2.  17.   0.   2.]
+ [  0.   8.  11.  18. 143.  15.   1.   4.]
+ [  0.   2.   1.   6.   0. 167.   1.   2.]
+ [ 19.   6.   1.  22.   0.  49. 109.   5.]
+ [  8.   4.   1.   7.   2.   2.   0. 168.]]
+   Model saved to checkModel.pth
+ep 131, loss: 43.06, 6400 train 84.92%, 1600 test 76.69%
+ep 132, loss: 42.72, 6400 train 85.00%, 1600 test 74.00%
+ep 133, loss: 41.20, 6400 train 85.52%, 1600 test 72.50%
+ep 134, loss: 41.32, 6400 train 85.30%, 1600 test 78.94%
+ep 135, loss: 38.82, 6400 train 86.44%, 1600 test 73.88%
+ep 136, loss: 40.64, 6400 train 85.81%, 1600 test 74.31%
+ep 137, loss: 41.26, 6400 train 85.41%, 1600 test 75.00%
+ep 138, loss: 41.70, 6400 train 84.77%, 1600 test 74.38%
+ep 139, loss: 39.60, 6400 train 85.56%, 1600 test 73.00%
+ep 140, loss: 40.65, 6400 train 85.86%, 1600 test 72.88%
+[[151.   0.   1.  36.   3.   2.   1.   5.]
+ [  1. 124.   2.  17.  21.  19.   2.  23.]
+ [  7.   4. 132.  24.  23.  11.   2.   6.]
+ [  2.   2.   0. 186.   5.   5.   0.   1.]
+ [  0.   6.   8.  21. 158.   4.   0.   3.]
+ [  0.   4.   2.  14.   3. 154.   1.   1.]
+ [ 30.  13.   4.  32.   3.  22. 101.   6.]
+ [ 11.   6.   1.  11.   2.   1.   0. 160.]]
+   Model saved to checkModel.pth
+
 ```
