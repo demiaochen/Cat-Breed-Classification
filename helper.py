@@ -187,7 +187,8 @@ def plot_confusion_matrix(conf_mat,
                           colorbar=False,
                           show_absolute=True,
                           show_normed=False,
-                          class_names=None):
+                          class_names=None,
+                          test_data_distribution=None):
 
     if not (show_absolute or show_normed):
         raise AssertionError('Both show_absolute and show_normed are False')
@@ -213,6 +214,11 @@ def plot_confusion_matrix(conf_mat,
 
     if colorbar:
         fig.colorbar(matshow)
+
+    if test_data_distribution is not None:
+        # now we want to find the confusion matrix as percentage...
+        for ix,iy in np.ndindex(conf_mat.shape):
+            conf_mat[ix,iy] = (conf_mat[ix,iy] / test_data_distribution[ix]) * 100  
 
     for i in range(conf_mat.shape[0]):
         for j in range(conf_mat.shape[1]):

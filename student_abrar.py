@@ -58,43 +58,84 @@ def transform(mode):
 ############################################################################
 ######   Define the Module to process the images and produce labels   ######
 ############################################################################
-class Network(nn.Module):
+##########################################################################################
+# trying to take some inspirations from vgg16 but with less channels and fc layer nodes. #
+##########################################################################################
+class SimpleCNN(nn.Module):
     def __init__(self):
         super().__init__()
-        self.conv1 = nn.Conv2d(3, 30, kernel_size=5, padding=2)
-        self.conv2 = nn.Conv2d(30, 120, kernel_size=5)
-        self.conv3 = nn.Conv2d(120, 360, kernel_size=3)
-        #self.conv4 = nn.Conv2d(360, 540, kernel_size=3)
-        self.fc1 = nn.Linear(360*5*5, 1000)
-        self.fc2 = nn.Linear(1000, 1000)
-        self.fc3 = nn.Linear(1000, 8) # output layer
-        # Dropout
-        self.dropout = nn.Dropout(0.4)
+        
+        self.cnn_layers = nn.Sequential(
+            nn.Conv2d(3, 32, kernel_size=5, padding=2),
+            nn.BatchNorm2d(32),
+            nn.LeakyReLU(0.1, inplace=True),
+            
+            nn.Conv2d(32, 32, kernel_size=5, padding=2),
+            nn.BatchNorm2d(32),
+            nn.LeakyReLU(0.1, inplace=True),
+            
+            nn.MaxPool2d((2, 2)),
+            
+            nn.Conv2d(32, 64, kernel_size=5, padding=2),
+            nn.BatchNorm2d(64),
+            nn.LeakyReLU(0.1, inplace=True),
+            
+            nn.Conv2d(64, 64, kernel_size=5, padding=2),
+            nn.BatchNorm2d(64),
+            nn.LeakyReLU(0.1, inplace=True),
+            
+            nn.MaxPool2d((2, 2)),
+            
+            nn.Conv2d(64, 128, kernel_size=3, padding=1),
+            nn.BatchNorm2d(128),
+            nn.LeakyReLU(0.1, inplace=True),
+            
+            nn.Conv2d(128, 128, kernel_size=3, padding=1),
+            nn.BatchNorm2d(128),
+            nn.LeakyReLU(0.1, inplace=True),
+            
+            nn.MaxPool2d((2, 2)),
+            
+            nn.Conv2d(128, 256, kernel_size=3, padding=1),
+            nn.BatchNorm2d(256),
+            nn.LeakyReLU(0.1, inplace=True),
+            
+            nn.Conv2d(256, 256, kernel_size=3, padding=1),
+            nn.BatchNorm2d(256),
+            nn.LeakyReLU(0.1, inplace=True),
+            
+            nn.MaxPool2d((2, 2))
+        )
+
+        self.fc_layers = nn.Sequential(
+            nn.Dropout(p=0.3),
+            nn.Linear(256*5*5, 1000),
+            nn.BatchNorm1d(1000),
+            nn.ReLU(),
+            
+            nn.Dropout(p=0.4),
+            nn.Linear(1000, 2000),
+            nn.BatchNorm1d(2000),
+            nn.ReLU(),
+            
+            nn.Dropout(p=0.4),
+            nn.Linear(2000, 1000),
+            nn.BatchNorm1d(1000),
+            nn.ReLU(),
+            
+            nn.Dropout(p=0.4),
+            nn.Linear(1000, 8)
+        )
         
     def forward(self, x):
-        ###############
-        # CONV Layers #
-        ###############
-        out = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))
-        out = F.max_pool2d(F.relu(self.conv2(out)), (2, 2))
-        out = F.max_pool2d(F.relu(self.conv3(out)), (2, 2))
-        #out = F.max_pool2d(F.relu(self.conv4(out)), (2, 2))
-        #print(out.shape)
-        out = out.view(out.size(0), -1)
-        
-        ##########################
-        # Fully Connected Layers #
-        ##########################
-        out = self.dropout(F.relu(self.fc1(out)))
-        out = self.dropout(F.relu(self.fc2(out)))
-        
-        ################
-        # Output Layer #
-        ################
-        predicted_output = F.log_softmax(self.fc3(out), dim=1)
-        return predicted_output
+        x = self.cnn_layers(x)
+        #print(x.shape)
+        x = torch.flatten(x, start_dim=1)
+        #print(x.shape)
+        x = self.fc_layers(x)
+        return F.log_softmax(x, dim=1)    
 
-net = Network()
+net = SimpleCNN()
 ############################################################################
 ######      Specify the optimizer and loss function                   ######
 ############################################################################
