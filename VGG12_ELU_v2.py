@@ -37,9 +37,28 @@ def transform(mode):
     You may specify different transforms for training and testing
     """
     if mode == 'train':
-        return transforms.ToTensor()
+        return transforms.Compose(
+            [   
+                transforms.RandomResizedCrop(size=80, scale=(0.55, 1.0), ratio=(0.75, 1.3)),
+                transforms.RandomHorizontalFlip(),
+                transforms.RandomPerspective(p=0.2),
+                transforms.RandomAffine(degrees=(-15, 15), translate=(0.0, 0.5)),
+                transforms.RandomRotation((-10,10)),
+                transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.1, hue=0.02),
+                transforms.RandomPosterize(bits=3, p=0.3),
+                transforms.RandomEqualize(p=0.1),
+                transforms.RandomGrayscale(p=0.01),
+                transforms.RandomPerspective(distortion_scale=0.05, p=0.1, fill=0),
+                transforms.RandomAdjustSharpness(sharpness_factor=2, p=0.5),
+                transforms.ToTensor()
+            ]
+        )
     elif mode == 'test':
-        return transforms.ToTensor()
+        return transforms.Compose(
+            [   
+                transforms.ToTensor()
+            ]
+        )
 
 
 ############################################################################
