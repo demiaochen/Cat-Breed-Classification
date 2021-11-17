@@ -1,0 +1,8 @@
+Testing submission on selected validation data...
+=================================================
+Using device: cpu
+
+Loading submission test samples...Done! Loaded 800 samples
+Loading your model...Done!
+Evaluating model................................
+Done! Accuracy:  90.00%
