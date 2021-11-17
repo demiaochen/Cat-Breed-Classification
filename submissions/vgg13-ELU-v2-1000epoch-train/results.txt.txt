@@ -1,0 +1,13 @@
+Testing submission on selected validation data...
+=================================================
+Using device: cpu
+
+Loading submission test samples...Done! Loaded 800 samples
+Loading your model...Done!
+Evaluating model................................
+Done! Accuracy:  92.25%
+
+Submission datestamp:   Wed Nov 17 19:06:28 2021
+Assignment deadline:    Fri Nov 19 23:59:59 2021
+This submission is 2 days and 4 hours early
+Your submission is ACCEPTED.
