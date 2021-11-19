@@ -12,13 +12,11 @@
 
 ### 1 Choice of architecture
 
-We noticed that we will be working on an image classification task, and for such a purpose Convolutional Networks would be the best choice as we expect it to learn useful features from the images of cats.
-
 #### 1.1 First approach - Simple Convolutional Network
 
-We first took our basic ConvNet we used for the KMNIST classification task in assignment 1 and made no changes to other hyper parameters . This composed of 2 convolution layers followed by 2 fully-connected layers with 150 nodes in each layer followed by an output layer of size 8 (8 breeds of cat).
+We first took our basic ConvNet we used for the KMNIST classification task in assignment 1 and made no changes to other hyper parameters. This composed of 3 convolution layers followed by 3 fully-connected layers with 150 nodes in each layer followed by an output layer of size 8 (8 breeds of cat).
 
-We noticed that after 100 epochs training accuracy using this very basic model would reach close to 100%, however validation set accuracy would get stuck at below 50% and not improve with any more epoch. This would be used as a baseline to compare our subsequent models against.
+We noticed that after 50 epochs, training accuracy using this very basic model would reach close to 100% however validation set accuracy would get stuck at below 50% and not improve with more epochs. We decided this would be used as a baseline to compare our subsequent models against.
 
 #### 1.2 Final approach - Modified version of VGG (VGG-13)
 
@@ -116,7 +114,7 @@ Note: Plots were generated using these [open source helper functions](https://gi
 
 #### Model Comparison
 
-One possible reason of why our VGG-13 got higher accuracy (88%) on the validation set in comparison to ResNet-18 (84%) was due to the additional layers on ResNet-18 it was more prone to overfitting as we can see on the diagram. A simpler implementation of ResNet with lower number of convolution layers is likely to have performed better.
+One possible reason of why our VGG-13 got higher accuracy (88%) on the validation set in comparison to ResNet-18 (84%) was due to the additional layers on ResNet-18 it was more prone to overfitting as we can see on the diagram. A simpler implementation of ResNet with lower number of convolution layers is likely to have performed better. These results were a significant improvement to our starting point using a basic 3-layer convolutional network.
 
 Due to the higher validation set accuracy we decided to submit our VGG-13 implementation. Our unsubmitted ResNet-18 implementation can be found on this [Secret Gist on GitHub](https://gist.github.com/abraramin/81d4f0e2be95a5dea055581b6ebb5d56).
 
