@@ -1,0 +1,1958 @@
+ .\local_hw2main.py
+Using device: cuda:0
+
++-----------------------+------------+
+|        Modules        | Parameters |
++-----------------------+------------+
+|  conv_layers.0.weight |    1728    |
+|   conv_layers.0.bias  |     64     |
+|  conv_layers.1.weight |     64     |
+|   conv_layers.1.bias  |     64     |
+|  conv_layers.3.weight |   36864    |
+|   conv_layers.3.bias  |     64     |
+|  conv_layers.4.weight |     64     |
+|   conv_layers.4.bias  |     64     |
+|  conv_layers.7.weight |   73728    |
+|   conv_layers.7.bias  |    128     |
+|  conv_layers.8.weight |    128     |
+|   conv_layers.8.bias  |    128     |
+| conv_layers.10.weight |   147456   |
+|  conv_layers.10.bias  |    128     |
+| conv_layers.11.weight |    128     |
+|  conv_layers.11.bias  |    128     |
+| conv_layers.14.weight |   294912   |
+|  conv_layers.14.bias  |    256     |
+| conv_layers.15.weight |    256     |
+|  conv_layers.15.bias  |    256     |
+| conv_layers.17.weight |   589824   |
+|  conv_layers.17.bias  |    256     |
+| conv_layers.18.weight |    256     |
+|  conv_layers.18.bias  |    256     |
+| conv_layers.20.weight |   589824   |
+|  conv_layers.20.bias  |    256     |
+| conv_layers.21.weight |    256     |
+|  conv_layers.21.bias  |    256     |
+| conv_layers.24.weight |  1179648   |
+|  conv_layers.24.bias  |    512     |
+| conv_layers.25.weight |    512     |
+|  conv_layers.25.bias  |    512     |
+| conv_layers.27.weight |  2359296   |
+|  conv_layers.27.bias  |    512     |
+| conv_layers.28.weight |    512     |
+|  conv_layers.28.bias  |    512     |
+| conv_layers.30.weight |  2359296   |
+|  conv_layers.30.bias  |    512     |
+| conv_layers.31.weight |    512     |
+|  conv_layers.31.bias  |    512     |
+|   fc_layers.2.weight  |  4718592   |
+|    fc_layers.2.bias   |    1024    |
+|   fc_layers.3.weight  |    1024    |
+|    fc_layers.3.bias   |    1024    |
+|    fc_layers.6.bias   |    512     |
+|   fc_layers.7.weight  |    512     |
+|    fc_layers.7.bias   |    512     |
+|  fc_layers.10.weight  |    4096    |
+|   fc_layers.10.bias   |     8      |
++-----------------------+------------+
+Total Trainable Params: 12892232
+Start training...
+Traceback (most recent call last):
+  File ".\local_hw2main.py", line 168, in <module>
+    main()
+  File ".\local_hw2main.py", line 130, in main
+    preds = net(images)             # Process batch
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\nn\modules\module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "C:\Users\Kate\zcode\Cat-Breed-Classification\student.py", line 151, in forward
+    x = self.fc_layers(x)
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\nn\modules\module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\nn\modules\container.py", line 119, in forward
+    input = module(input)
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\nn\modules\module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\nn\modules\dropout.py", line 58, in forward
+    return F.dropout(input, self.p, self.training, self.inplace)
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\nn\functional.py", line 1076, in dropout
+    return _VF.dropout_(input, p, training) if inplace else _VF.dropout(input, p, training)
+KeyboardInterrupt
+Using device: cuda:0
+
+Start training...
+ep 1, loss: 63.69, 8000 train 21.44%
+ep 2, loss: 59.30, 8000 train 27.57%
+ep 3, loss: 57.30, 8000 train 31.11%
+Traceback (most recent call last):
+  File ".\hw2main.py", line 154, in <module>
+    main()
+  File ".\hw2main.py", line 111, in main
+    for batch in trainloader:           # Load batch
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\utils\data\dataloader.py", line 517, in __next__
+    data = self._next_data()
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\utils\data\dataloader.py", line 557, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\utils\data\_utils\fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\utils\data\_utils\fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torchvision\datasets\folder.py", line 180, in __getitem__
+    sample = self.transform(sample)
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torchvision\transforms\transforms.py", line 60, in __call__
+    img = t(img)
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torch\nn\modules\module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "C:\Users\Kate\.conda\envs\cse\lib\site-packages\torchvision\transforms\transforms.py", line 1850, in forward
+    if torch.rand(1).item() < self.p:
+KeyboardInterrupt
+ Kate@Le7    zcode  Cat-Breed-Classification  main   cse 3.7.3  python .\local_hw2main.py
+Using device: cuda:0
+
++-----------------------+------------+
+|        Modules        | Parameters |
++-----------------------+------------+
+|  conv_layers.0.weight |    1728    |
+|   conv_layers.0.bias  |     64     |
+|  conv_layers.1.weight |     64     |
+|   conv_layers.1.bias  |     64     |
+|  conv_layers.3.weight |   36864    |
+|   conv_layers.3.bias  |     64     |
+|  conv_layers.4.weight |     64     |
+|   conv_layers.4.bias  |     64     |
+|  conv_layers.7.weight |   73728    |
+|   conv_layers.7.bias  |    128     |
+|  conv_layers.8.weight |    128     |
+|   conv_layers.8.bias  |    128     |
+| conv_layers.10.weight |   147456   |
+|  conv_layers.10.bias  |    128     |
+| conv_layers.11.weight |    128     |
+|  conv_layers.11.bias  |    128     |
+| conv_layers.14.weight |   294912   |
+|  conv_layers.14.bias  |    256     |
+| conv_layers.15.weight |    256     |
+|  conv_layers.15.bias  |    256     |
+| conv_layers.17.weight |   589824   |
+|  conv_layers.17.bias  |    256     |
+| conv_layers.18.weight |    256     |
+|  conv_layers.18.bias  |    256     |
+| conv_layers.20.weight |   589824   |
+|  conv_layers.20.bias  |    256     |
+| conv_layers.21.weight |    256     |
+|  conv_layers.21.bias  |    256     |
+| conv_layers.24.weight |  1179648   |
+|  conv_layers.24.bias  |    512     |
+| conv_layers.25.weight |    512     |
+|  conv_layers.25.bias  |    512     |
+| conv_layers.27.weight |  2359296   |
+|  conv_layers.27.bias  |    512     |
+| conv_layers.28.weight |    512     |
+|  conv_layers.28.bias  |    512     |
+| conv_layers.30.weight |  2359296   |
+|  conv_layers.30.bias  |    512     |
+| conv_layers.31.weight |    512     |
+|  conv_layers.31.bias  |    512     |
+|   fc_layers.2.weight  |  4718592   |
+|    fc_layers.2.bias   |    1024    |
+|   fc_layers.3.weight  |    1024    |
+|    fc_layers.3.bias   |    1024    |
+|   fc_layers.6.weight  |   524288   |
+|    fc_layers.6.bias   |    512     |
+|   fc_layers.7.weight  |    512     |
+|    fc_layers.7.bias   |    512     |
+|  fc_layers.10.weight  |    4096    |
+|   fc_layers.10.bias   |     8      |
++-----------------------+------------+
+Total Trainable Params: 12892232
+Start training...
+ep 1, loss: 63.71, 8000 train 21.99%
+ep 2, loss: 58.91, 8000 train 28.12%
+ep 3, loss: 57.07, 8000 train 31.67%
+ep 4, loss: 54.98, 8000 train 34.73%
+ep 5, loss: 53.36, 8000 train 36.88%
+ep 6, loss: 53.01, 8000 train 36.01%
+ep 7, loss: 51.37, 8000 train 40.14%
+ep 8, loss: 50.32, 8000 train 41.65%
+ep 9, loss: 50.11, 8000 train 41.54%
+ep 10, loss: 48.22, 8000 train 45.16%
+   Model saved to checkModel.pth
+ep 11, loss: 48.06, 8000 train 44.15%
+ep 12, loss: 46.83, 8000 train 46.49%
+ep 13, loss: 46.82, 8000 train 45.90%
+ep 14, loss: 46.30, 8000 train 46.26%
+ep 15, loss: 45.99, 8000 train 48.08%
+ep 16, loss: 45.28, 8000 train 47.73%
+ep 17, loss: 44.35, 8000 train 49.84%
+ep 18, loss: 43.26, 8000 train 51.51%
+ep 19, loss: 43.74, 8000 train 49.89%
+ep 20, loss: 43.29, 8000 train 51.01%
+   Model saved to checkModel.pth
+ep 21, loss: 42.44, 8000 train 51.95%
+ep 22, loss: 41.86, 8000 train 52.89%
+ep 23, loss: 41.08, 8000 train 53.21%
+ep 24, loss: 41.58, 8000 train 53.97%
+ep 25, loss: 40.44, 8000 train 54.26%
+ep 26, loss: 40.01, 8000 train 54.39%
+ep 27, loss: 39.23, 8000 train 55.61%
+ep 28, loss: 38.92, 8000 train 56.46%
+ep 29, loss: 39.14, 8000 train 56.29%
+ep 30, loss: 38.25, 8000 train 57.45%
+   Model saved to checkModel.pth
+ep 31, loss: 37.74, 8000 train 57.27%
+ep 32, loss: 38.01, 8000 train 58.10%
+ep 33, loss: 37.48, 8000 train 58.44%
+ep 34, loss: 37.35, 8000 train 58.85%
+ep 35, loss: 36.53, 8000 train 59.35%
+ep 36, loss: 36.05, 8000 train 59.75%
+ep 37, loss: 35.91, 8000 train 59.67%
+ep 38, loss: 36.02, 8000 train 59.45%
+ep 39, loss: 35.45, 8000 train 61.21%
+ep 40, loss: 35.80, 8000 train 59.38%
+   Model saved to checkModel.pth
+ep 41, loss: 34.67, 8000 train 61.50%
+ep 42, loss: 33.60, 8000 train 62.80%
+ep 43, loss: 34.34, 8000 train 62.64%
+ep 44, loss: 33.83, 8000 train 62.85%
+ep 45, loss: 34.51, 8000 train 61.82%
+ep 46, loss: 33.17, 8000 train 63.80%
+ep 47, loss: 33.03, 8000 train 63.79%
+ep 48, loss: 34.67, 8000 train 61.71%
+ep 49, loss: 33.32, 8000 train 62.55%
+ep 50, loss: 31.96, 8000 train 64.95%
+   Model saved to checkModel.pth
+   Model saved to sub_50_64.95.pth
+ep 51, loss: 32.58, 8000 train 64.03%
+ep 52, loss: 32.20, 8000 train 64.64%
+ep 53, loss: 32.36, 8000 train 64.66%
+ep 54, loss: 31.84, 8000 train 64.83%
+ep 55, loss: 31.84, 8000 train 64.54%
+ep 56, loss: 31.40, 8000 train 65.67%
+ep 57, loss: 31.07, 8000 train 66.45%
+ep 58, loss: 31.39, 8000 train 65.69%
+ep 59, loss: 30.75, 8000 train 66.31%
+ep 60, loss: 30.62, 8000 train 66.01%
+   Model saved to checkModel.pth
+ep 61, loss: 30.56, 8000 train 66.61%
+ep 62, loss: 30.32, 8000 train 66.80%
+ep 63, loss: 30.05, 8000 train 66.97%
+ep 64, loss: 30.28, 8000 train 66.99%
+ep 65, loss: 30.36, 8000 train 66.10%
+ep 66, loss: 30.82, 8000 train 66.53%
+ep 67, loss: 29.13, 8000 train 67.81%
+ep 68, loss: 28.66, 8000 train 68.70%
+ep 69, loss: 28.95, 8000 train 68.81%
+ep 70, loss: 29.50, 8000 train 67.61%
+   Model saved to checkModel.pth
+ep 71, loss: 29.29, 8000 train 68.06%
+ep 72, loss: 28.66, 8000 train 69.35%
+ep 73, loss: 28.73, 8000 train 68.88%
+ep 74, loss: 28.13, 8000 train 69.41%
+ep 75, loss: 28.00, 8000 train 69.56%
+ep 76, loss: 28.09, 8000 train 69.41%
+ep 77, loss: 27.44, 8000 train 69.71%
+ep 78, loss: 27.52, 8000 train 69.70%
+ep 79, loss: 27.85, 8000 train 69.42%
+ep 80, loss: 27.39, 8000 train 70.50%
+   Model saved to checkModel.pth
+ep 81, loss: 26.89, 8000 train 70.58%
+ep 82, loss: 27.33, 8000 train 70.38%
+ep 83, loss: 26.97, 8000 train 69.81%
+ep 84, loss: 26.87, 8000 train 70.51%
+ep 85, loss: 26.80, 8000 train 71.05%
+ep 86, loss: 26.44, 8000 train 70.95%
+ep 87, loss: 26.20, 8000 train 71.80%
+ep 88, loss: 26.14, 8000 train 71.30%
+ep 89, loss: 26.37, 8000 train 71.90%
+ep 90, loss: 25.46, 8000 train 72.46%
+   Model saved to checkModel.pth
+ep 91, loss: 25.76, 8000 train 71.99%
+ep 92, loss: 25.32, 8000 train 72.65%
+ep 93, loss: 25.92, 8000 train 72.21%
+ep 94, loss: 25.80, 8000 train 71.76%
+ep 95, loss: 25.85, 8000 train 71.47%
+ep 96, loss: 25.13, 8000 train 72.81%
+ep 97, loss: 25.09, 8000 train 72.97%
+ep 98, loss: 25.39, 8000 train 72.31%
+ep 99, loss: 25.26, 8000 train 73.17%
+ep 100, loss: 25.15, 8000 train 72.78%
+   Model saved to checkModel.pth
+   Model saved to sub_100_72.775.pth
+ep 101, loss: 24.81, 8000 train 73.44%
+ep 102, loss: 24.69, 8000 train 73.05%
+ep 103, loss: 24.23, 8000 train 73.90%
+ep 104, loss: 24.82, 8000 train 73.44%
+ep 105, loss: 23.75, 8000 train 73.72%
+ep 106, loss: 24.14, 8000 train 73.85%
+ep 107, loss: 24.26, 8000 train 73.64%
+ep 108, loss: 25.09, 8000 train 72.72%
+ep 109, loss: 24.60, 8000 train 73.44%
+ep 110, loss: 22.81, 8000 train 74.92%
+   Model saved to checkModel.pth
+ep 111, loss: 22.96, 8000 train 75.49%
+ep 112, loss: 24.29, 8000 train 74.06%
+ep 113, loss: 23.66, 8000 train 74.90%
+ep 114, loss: 23.55, 8000 train 74.25%
+ep 115, loss: 23.12, 8000 train 74.83%
+ep 116, loss: 23.49, 8000 train 74.46%
+ep 117, loss: 23.71, 8000 train 74.29%
+ep 118, loss: 23.60, 8000 train 73.72%
+ep 119, loss: 23.14, 8000 train 74.64%
+ep 120, loss: 23.19, 8000 train 74.48%
+   Model saved to checkModel.pth
+ep 121, loss: 23.14, 8000 train 74.99%
+ep 122, loss: 22.97, 8000 train 74.74%
+ep 123, loss: 22.81, 8000 train 75.31%
+ep 124, loss: 22.23, 8000 train 76.29%
+ep 125, loss: 22.61, 8000 train 75.22%
+ep 126, loss: 22.98, 8000 train 75.40%
+ep 127, loss: 22.82, 8000 train 75.39%
+ep 128, loss: 22.26, 8000 train 76.20%
+ep 129, loss: 22.43, 8000 train 75.50%
+ep 130, loss: 21.81, 8000 train 76.25%
+   Model saved to checkModel.pth
+ep 131, loss: 21.45, 8000 train 76.50%
+ep 132, loss: 21.72, 8000 train 76.66%
+ep 133, loss: 22.69, 8000 train 75.49%
+ep 134, loss: 21.68, 8000 train 76.62%
+ep 135, loss: 21.65, 8000 train 76.71%
+ep 136, loss: 22.45, 8000 train 76.02%
+ep 137, loss: 21.26, 8000 train 77.20%
+ep 138, loss: 21.53, 8000 train 76.68%
+ep 139, loss: 21.17, 8000 train 77.01%
+ep 140, loss: 21.26, 8000 train 76.83%
+   Model saved to checkModel.pth
+ep 141, loss: 21.93, 8000 train 76.33%
+ep 142, loss: 21.30, 8000 train 76.65%
+ep 143, loss: 21.54, 8000 train 76.86%
+ep 144, loss: 21.13, 8000 train 77.06%
+ep 145, loss: 20.70, 8000 train 77.75%
+ep 146, loss: 21.51, 8000 train 77.05%
+ep 147, loss: 21.08, 8000 train 76.95%
+ep 148, loss: 21.26, 8000 train 76.99%
+ep 149, loss: 20.67, 8000 train 77.35%
+ep 150, loss: 20.77, 8000 train 77.75%
+   Model saved to checkModel.pth
+   Model saved to sub_150_77.75.pth
+ep 151, loss: 20.45, 8000 train 77.60%
+ep 152, loss: 21.06, 8000 train 77.44%
+ep 153, loss: 20.49, 8000 train 77.81%
+ep 154, loss: 20.31, 8000 train 77.61%
+ep 155, loss: 21.26, 8000 train 76.90%
+ep 156, loss: 20.42, 8000 train 77.70%
+ep 157, loss: 19.98, 8000 train 77.92%
+ep 158, loss: 20.29, 8000 train 77.76%
+ep 159, loss: 19.84, 8000 train 78.59%
+ep 160, loss: 19.94, 8000 train 77.80%
+   Model saved to checkModel.pth
+ep 161, loss: 19.33, 8000 train 79.01%
+ep 162, loss: 20.44, 8000 train 78.17%
+ep 163, loss: 20.27, 8000 train 78.39%
+ep 164, loss: 20.03, 8000 train 78.04%
+ep 165, loss: 19.96, 8000 train 79.11%
+ep 166, loss: 19.72, 8000 train 78.72%
+ep 167, loss: 19.75, 8000 train 78.72%
+ep 168, loss: 19.23, 8000 train 79.30%
+ep 169, loss: 19.46, 8000 train 78.74%
+ep 170, loss: 19.15, 8000 train 79.33%
+   Model saved to checkModel.pth
+ep 171, loss: 19.93, 8000 train 78.20%
+ep 172, loss: 19.53, 8000 train 79.24%
+ep 173, loss: 19.73, 8000 train 78.57%
+ep 174, loss: 19.65, 8000 train 78.27%
+ep 175, loss: 19.12, 8000 train 79.39%
+ep 176, loss: 18.87, 8000 train 79.31%
+ep 177, loss: 19.35, 8000 train 79.15%
+ep 178, loss: 18.72, 8000 train 79.49%
+ep 179, loss: 19.23, 8000 train 79.01%
+ep 180, loss: 18.93, 8000 train 80.19%
+   Model saved to checkModel.pth
+ep 181, loss: 19.39, 8000 train 79.25%
+ep 182, loss: 19.12, 8000 train 78.88%
+ep 183, loss: 19.16, 8000 train 78.77%
+ep 184, loss: 18.61, 8000 train 79.45%
+ep 185, loss: 19.22, 8000 train 78.65%
+ep 186, loss: 18.29, 8000 train 80.05%
+ep 187, loss: 18.49, 8000 train 79.86%
+ep 188, loss: 18.05, 8000 train 80.46%
+ep 189, loss: 18.29, 8000 train 80.09%
+ep 190, loss: 18.89, 8000 train 79.86%
+   Model saved to checkModel.pth
+ep 191, loss: 18.59, 8000 train 79.66%
+ep 192, loss: 18.50, 8000 train 80.04%
+ep 193, loss: 17.89, 8000 train 80.54%
+ep 194, loss: 18.08, 8000 train 80.66%
+ep 195, loss: 18.14, 8000 train 80.50%
+ep 196, loss: 18.14, 8000 train 80.53%
+ep 197, loss: 18.78, 8000 train 79.94%
+ep 198, loss: 18.05, 8000 train 80.66%
+ep 199, loss: 17.94, 8000 train 80.58%
+ep 200, loss: 17.56, 8000 train 80.90%
+   Model saved to checkModel.pth
+   Model saved to sub_200_80.9.pth
+ep 201, loss: 17.37, 8000 train 81.16%
+ep 202, loss: 18.53, 8000 train 80.09%
+ep 203, loss: 18.09, 8000 train 80.19%
+ep 204, loss: 18.24, 8000 train 79.86%
+ep 205, loss: 18.18, 8000 train 80.11%
+ep 206, loss: 17.63, 8000 train 80.95%
+ep 207, loss: 17.40, 8000 train 81.40%
+ep 208, loss: 17.31, 8000 train 81.24%
+ep 209, loss: 17.30, 8000 train 80.94%
+ep 210, loss: 17.80, 8000 train 80.80%
+   Model saved to checkModel.pth
+ep 211, loss: 17.43, 8000 train 81.21%
+ep 212, loss: 17.77, 8000 train 80.96%
+ep 213, loss: 17.34, 8000 train 80.83%
+ep 214, loss: 16.47, 8000 train 82.75%
+ep 215, loss: 17.56, 8000 train 81.20%
+ep 216, loss: 16.85, 8000 train 81.61%
+ep 217, loss: 17.55, 8000 train 80.70%
+ep 218, loss: 17.70, 8000 train 81.17%
+ep 219, loss: 17.10, 8000 train 81.39%
+ep 220, loss: 17.36, 8000 train 81.62%
+   Model saved to checkModel.pth
+ep 221, loss: 17.16, 8000 train 81.27%
+ep 222, loss: 17.89, 8000 train 80.96%
+ep 223, loss: 17.10, 8000 train 82.03%
+ep 224, loss: 17.48, 8000 train 81.11%
+ep 225, loss: 17.18, 8000 train 81.10%
+ep 226, loss: 16.30, 8000 train 82.05%
+ep 227, loss: 16.57, 8000 train 82.16%
+ep 228, loss: 16.93, 8000 train 81.85%
+ep 229, loss: 16.29, 8000 train 81.84%
+ep 230, loss: 16.48, 8000 train 81.76%
+   Model saved to checkModel.pth
+ep 231, loss: 16.45, 8000 train 81.77%
+ep 232, loss: 16.47, 8000 train 82.20%
+ep 233, loss: 16.70, 8000 train 81.96%
+ep 234, loss: 16.76, 8000 train 82.08%
+ep 235, loss: 16.09, 8000 train 82.27%
+ep 236, loss: 16.28, 8000 train 82.35%
+ep 237, loss: 16.51, 8000 train 82.15%
+ep 238, loss: 16.40, 8000 train 82.38%
+ep 239, loss: 16.31, 8000 train 82.16%
+ep 240, loss: 16.42, 8000 train 82.47%
+   Model saved to checkModel.pth
+ep 241, loss: 16.29, 8000 train 82.16%
+ep 242, loss: 15.84, 8000 train 82.85%
+ep 243, loss: 16.16, 8000 train 82.12%
+ep 244, loss: 15.90, 8000 train 82.64%
+ep 245, loss: 15.98, 8000 train 82.53%
+ep 246, loss: 16.00, 8000 train 82.81%
+ep 247, loss: 16.18, 8000 train 82.39%
+ep 248, loss: 15.63, 8000 train 82.80%
+ep 249, loss: 15.50, 8000 train 83.19%
+ep 250, loss: 16.09, 8000 train 82.29%
+   Model saved to checkModel.pth
+   Model saved to sub_250_82.28750000000001.pth
+ep 251, loss: 15.76, 8000 train 82.59%
+ep 252, loss: 16.34, 8000 train 82.45%
+ep 253, loss: 15.39, 8000 train 83.40%
+ep 254, loss: 15.75, 8000 train 82.83%
+ep 255, loss: 15.73, 8000 train 83.31%
+ep 256, loss: 15.79, 8000 train 82.79%
+ep 257, loss: 15.00, 8000 train 84.20%
+ep 258, loss: 15.38, 8000 train 83.16%
+ep 259, loss: 15.29, 8000 train 83.33%
+ep 260, loss: 15.52, 8000 train 83.44%
+   Model saved to checkModel.pth
+ep 261, loss: 15.57, 8000 train 83.23%
+ep 262, loss: 16.04, 8000 train 83.12%
+ep 263, loss: 15.95, 8000 train 82.23%
+ep 264, loss: 15.01, 8000 train 83.73%
+ep 265, loss: 15.15, 8000 train 83.29%
+ep 266, loss: 14.84, 8000 train 83.58%
+ep 267, loss: 14.75, 8000 train 83.78%
+ep 268, loss: 14.76, 8000 train 83.85%
+ep 269, loss: 15.55, 8000 train 83.50%
+ep 270, loss: 15.17, 8000 train 83.54%
+   Model saved to checkModel.pth
+ep 271, loss: 14.61, 8000 train 84.00%
+ep 272, loss: 15.23, 8000 train 83.40%
+ep 273, loss: 14.47, 8000 train 84.04%
+ep 274, loss: 14.73, 8000 train 83.84%
+ep 275, loss: 14.60, 8000 train 84.16%
+ep 276, loss: 15.76, 8000 train 83.08%
+ep 277, loss: 15.00, 8000 train 83.54%
+ep 278, loss: 14.84, 8000 train 84.26%
+ep 279, loss: 14.41, 8000 train 84.41%
+ep 280, loss: 15.16, 8000 train 83.73%
+   Model saved to checkModel.pth
+ep 281, loss: 14.88, 8000 train 83.66%
+ep 282, loss: 15.32, 8000 train 84.34%
+ep 283, loss: 15.08, 8000 train 83.49%
+ep 284, loss: 14.89, 8000 train 83.89%
+ep 285, loss: 14.17, 8000 train 84.75%
+ep 286, loss: 14.55, 8000 train 83.69%
+ep 287, loss: 14.62, 8000 train 83.94%
+ep 288, loss: 14.20, 8000 train 84.59%
+ep 289, loss: 13.84, 8000 train 84.71%
+ep 290, loss: 14.86, 8000 train 83.88%
+   Model saved to checkModel.pth
+ep 291, loss: 14.69, 8000 train 83.75%
+ep 292, loss: 14.47, 8000 train 83.79%
+ep 293, loss: 13.92, 8000 train 84.80%
+ep 294, loss: 14.20, 8000 train 84.46%
+ep 295, loss: 14.03, 8000 train 84.55%
+ep 296, loss: 13.90, 8000 train 85.21%
+ep 297, loss: 14.27, 8000 train 84.44%
+ep 298, loss: 14.06, 8000 train 85.14%
+ep 299, loss: 13.94, 8000 train 84.71%
+ep 300, loss: 14.19, 8000 train 84.72%
+   Model saved to checkModel.pth
+   Model saved to sub_300_84.725.pth
+ep 301, loss: 14.05, 8000 train 84.92%
+ep 302, loss: 14.08, 8000 train 84.74%
+ep 303, loss: 13.75, 8000 train 85.44%
+ep 304, loss: 13.48, 8000 train 85.24%
+ep 305, loss: 14.43, 8000 train 84.19%
+ep 306, loss: 14.15, 8000 train 84.84%
+ep 307, loss: 14.03, 8000 train 84.96%
+ep 308, loss: 13.51, 8000 train 84.84%
+ep 309, loss: 14.25, 8000 train 84.47%
+ep 310, loss: 13.66, 8000 train 85.08%
+   Model saved to checkModel.pth
+ep 311, loss: 13.75, 8000 train 85.11%
+ep 312, loss: 14.45, 8000 train 84.54%
+ep 313, loss: 14.29, 8000 train 84.81%
+ep 314, loss: 14.10, 8000 train 84.75%
+ep 315, loss: 14.01, 8000 train 84.60%
+ep 316, loss: 13.72, 8000 train 85.08%
+ep 317, loss: 13.42, 8000 train 85.32%
+ep 318, loss: 13.18, 8000 train 85.19%
+ep 319, loss: 13.66, 8000 train 85.14%
+ep 320, loss: 13.22, 8000 train 85.52%
+   Model saved to checkModel.pth
+ep 321, loss: 13.86, 8000 train 85.20%
+ep 322, loss: 13.30, 8000 train 85.54%
+ep 323, loss: 13.04, 8000 train 86.09%
+ep 324, loss: 13.06, 8000 train 86.02%
+ep 325, loss: 13.87, 8000 train 84.97%
+ep 326, loss: 13.69, 8000 train 85.65%
+ep 327, loss: 13.14, 8000 train 85.78%
+ep 328, loss: 13.32, 8000 train 85.31%
+ep 329, loss: 13.30, 8000 train 85.60%
+ep 330, loss: 12.77, 8000 train 86.28%
+   Model saved to checkModel.pth
+ep 331, loss: 13.28, 8000 train 85.34%
+ep 332, loss: 13.45, 8000 train 85.29%
+ep 333, loss: 13.14, 8000 train 85.15%
+ep 334, loss: 13.31, 8000 train 85.52%
+ep 335, loss: 13.39, 8000 train 85.28%
+ep 336, loss: 12.73, 8000 train 85.96%
+ep 337, loss: 12.77, 8000 train 85.86%
+ep 338, loss: 12.98, 8000 train 85.72%
+ep 339, loss: 12.71, 8000 train 86.15%
+ep 340, loss: 13.08, 8000 train 85.76%
+   Model saved to checkModel.pth
+ep 341, loss: 13.17, 8000 train 85.95%
+ep 342, loss: 13.50, 8000 train 85.28%
+ep 343, loss: 13.65, 8000 train 85.11%
+ep 344, loss: 12.63, 8000 train 85.76%
+ep 345, loss: 12.74, 8000 train 85.86%
+ep 346, loss: 12.74, 8000 train 86.24%
+ep 347, loss: 13.20, 8000 train 86.05%
+ep 348, loss: 12.65, 8000 train 86.29%
+ep 349, loss: 12.80, 8000 train 86.26%
+ep 350, loss: 12.19, 8000 train 86.61%
+   Model saved to checkModel.pth
+   Model saved to sub_350_86.6125.pth
+ep 351, loss: 12.45, 8000 train 86.65%
+ep 352, loss: 12.50, 8000 train 86.12%
+ep 353, loss: 12.27, 8000 train 86.58%
+ep 354, loss: 13.13, 8000 train 85.96%
+ep 355, loss: 12.90, 8000 train 86.01%
+ep 356, loss: 12.52, 8000 train 86.85%
+ep 357, loss: 12.19, 8000 train 86.65%
+ep 358, loss: 13.12, 8000 train 86.00%
+ep 359, loss: 12.80, 8000 train 86.35%
+ep 360, loss: 12.49, 8000 train 86.38%
+   Model saved to checkModel.pth
+ep 361, loss: 12.86, 8000 train 86.10%
+ep 362, loss: 12.59, 8000 train 86.58%
+ep 363, loss: 12.20, 8000 train 86.85%
+ep 364, loss: 11.83, 8000 train 87.34%
+ep 365, loss: 11.12, 8000 train 87.71%
+ep 366, loss: 11.88, 8000 train 86.90%
+ep 367, loss: 12.65, 8000 train 86.15%
+ep 368, loss: 12.14, 8000 train 87.02%
+ep 369, loss: 12.13, 8000 train 86.75%
+ep 370, loss: 12.08, 8000 train 86.85%
+   Model saved to checkModel.pth
+ep 371, loss: 11.90, 8000 train 87.04%
+ep 372, loss: 12.05, 8000 train 86.96%
+ep 373, loss: 13.16, 8000 train 85.75%
+ep 374, loss: 12.22, 8000 train 86.74%
+ep 375, loss: 12.53, 8000 train 86.25%
+ep 376, loss: 12.10, 8000 train 86.94%
+ep 377, loss: 12.28, 8000 train 87.17%
+ep 378, loss: 12.08, 8000 train 86.46%
+ep 379, loss: 11.72, 8000 train 87.28%
+ep 380, loss: 12.08, 8000 train 86.55%
+   Model saved to checkModel.pth
+ep 381, loss: 11.99, 8000 train 86.80%
+ep 382, loss: 11.82, 8000 train 87.12%
+ep 383, loss: 12.05, 8000 train 86.90%
+ep 384, loss: 12.14, 8000 train 86.54%
+ep 385, loss: 11.87, 8000 train 87.19%
+ep 386, loss: 11.75, 8000 train 87.45%
+ep 387, loss: 12.51, 8000 train 86.45%
+ep 388, loss: 12.13, 8000 train 86.56%
+ep 389, loss: 11.19, 8000 train 87.81%
+ep 390, loss: 12.01, 8000 train 87.06%
+   Model saved to checkModel.pth
+ep 391, loss: 11.26, 8000 train 87.24%
+ep 392, loss: 11.52, 8000 train 87.59%
+ep 393, loss: 12.00, 8000 train 86.76%
+ep 394, loss: 11.59, 8000 train 87.33%
+ep 395, loss: 11.71, 8000 train 87.20%
+ep 396, loss: 11.22, 8000 train 87.89%
+ep 397, loss: 11.49, 8000 train 87.85%
+ep 398, loss: 12.15, 8000 train 87.04%
+ep 399, loss: 11.27, 8000 train 88.14%
+ep 400, loss: 12.10, 8000 train 86.99%
+   Model saved to checkModel.pth
+   Model saved to sub_400_86.9875.pth
+ep 401, loss: 11.48, 8000 train 87.56%
+ep 402, loss: 11.06, 8000 train 87.59%
+ep 403, loss: 11.12, 8000 train 88.28%
+ep 404, loss: 11.19, 8000 train 87.89%
+ep 405, loss: 11.63, 8000 train 87.45%
+ep 406, loss: 10.53, 8000 train 88.41%
+ep 407, loss: 11.82, 8000 train 87.24%
+ep 408, loss: 12.36, 8000 train 86.75%
+ep 409, loss: 11.57, 8000 train 87.54%
+ep 410, loss: 11.96, 8000 train 86.84%
+   Model saved to checkModel.pth
+ep 411, loss: 11.12, 8000 train 88.16%
+ep 412, loss: 11.45, 8000 train 87.71%
+ep 413, loss: 11.09, 8000 train 87.64%
+ep 414, loss: 10.93, 8000 train 88.15%
+ep 415, loss: 11.73, 8000 train 87.30%
+ep 416, loss: 11.14, 8000 train 87.88%
+ep 417, loss: 11.39, 8000 train 87.54%
+ep 418, loss: 11.48, 8000 train 87.44%
+ep 419, loss: 10.88, 8000 train 87.74%
+ep 420, loss: 11.58, 8000 train 87.45%
+   Model saved to checkModel.pth
+ep 421, loss: 11.28, 8000 train 87.52%
+ep 422, loss: 11.39, 8000 train 87.51%
+ep 423, loss: 11.84, 8000 train 87.29%
+ep 424, loss: 10.87, 8000 train 88.42%
+ep 425, loss: 10.72, 8000 train 88.31%
+ep 426, loss: 10.63, 8000 train 88.14%
+ep 427, loss: 11.10, 8000 train 88.25%
+ep 428, loss: 11.18, 8000 train 87.95%
+ep 429, loss: 11.09, 8000 train 87.94%
+ep 430, loss: 10.72, 8000 train 88.11%
+   Model saved to checkModel.pth
+ep 431, loss: 10.87, 8000 train 88.16%
+ep 432, loss: 11.37, 8000 train 87.94%
+ep 433, loss: 11.30, 8000 train 87.95%
+ep 434, loss: 10.61, 8000 train 88.71%
+ep 435, loss: 10.60, 8000 train 88.51%
+ep 436, loss: 11.36, 8000 train 87.66%
+ep 437, loss: 10.77, 8000 train 88.42%
+ep 438, loss: 10.54, 8000 train 88.38%
+ep 439, loss: 10.71, 8000 train 88.24%
+ep 440, loss: 11.29, 8000 train 87.88%
+   Model saved to checkModel.pth
+ep 441, loss: 10.82, 8000 train 88.12%
+ep 442, loss: 10.79, 8000 train 87.90%
+ep 443, loss: 10.69, 8000 train 88.41%
+ep 444, loss: 10.97, 8000 train 88.10%
+ep 445, loss: 10.61, 8000 train 88.29%
+ep 446, loss: 10.96, 8000 train 88.28%
+ep 447, loss: 11.31, 8000 train 87.76%
+ep 448, loss: 10.32, 8000 train 88.69%
+ep 449, loss: 10.56, 8000 train 88.83%
+ep 450, loss: 10.48, 8000 train 88.50%
+   Model saved to checkModel.pth
+   Model saved to sub_450_88.5.pth
+ep 451, loss: 10.92, 8000 train 87.99%
+ep 452, loss: 11.13, 8000 train 87.90%
+ep 453, loss: 10.92, 8000 train 88.19%
+ep 454, loss: 10.48, 8000 train 88.25%
+ep 455, loss: 10.69, 8000 train 88.34%
+ep 456, loss: 10.85, 8000 train 87.90%
+ep 457, loss: 10.47, 8000 train 88.31%
+ep 458, loss: 10.60, 8000 train 88.46%
+ep 459, loss: 10.47, 8000 train 88.89%
+ep 460, loss: 10.17, 8000 train 88.64%
+   Model saved to checkModel.pth
+ep 461, loss: 9.67, 8000 train 89.48%
+ep 462, loss: 10.39, 8000 train 88.65%
+ep 463, loss: 10.30, 8000 train 88.74%
+ep 464, loss: 10.59, 8000 train 88.66%
+ep 465, loss: 10.04, 8000 train 88.98%
+ep 466, loss: 10.49, 8000 train 88.71%
+ep 467, loss: 10.86, 8000 train 88.30%
+ep 468, loss: 10.32, 8000 train 88.70%
+ep 469, loss: 10.10, 8000 train 89.42%
+ep 470, loss: 10.22, 8000 train 88.72%
+   Model saved to checkModel.pth
+ep 471, loss: 10.76, 8000 train 88.48%
+ep 472, loss: 10.37, 8000 train 88.72%
+ep 473, loss: 10.55, 8000 train 88.96%
+ep 474, loss: 10.03, 8000 train 88.88%
+ep 475, loss: 9.91, 8000 train 89.53%
+ep 476, loss: 10.12, 8000 train 89.21%
+ep 477, loss: 10.56, 8000 train 88.14%
+ep 478, loss: 10.09, 8000 train 89.35%
+ep 479, loss: 10.26, 8000 train 88.96%
+ep 480, loss: 9.85, 8000 train 89.20%
+   Model saved to checkModel.pth
+ep 481, loss: 10.13, 8000 train 89.55%
+ep 482, loss: 9.99, 8000 train 89.10%
+ep 483, loss: 10.38, 8000 train 88.80%
+ep 484, loss: 11.00, 8000 train 87.91%
+ep 485, loss: 10.26, 8000 train 88.66%
+ep 486, loss: 9.98, 8000 train 89.29%
+ep 487, loss: 10.12, 8000 train 88.99%
+ep 488, loss: 10.34, 8000 train 89.14%
+ep 489, loss: 9.85, 8000 train 89.12%
+ep 490, loss: 9.96, 8000 train 89.35%
+   Model saved to checkModel.pth
+ep 491, loss: 9.77, 8000 train 89.81%
+ep 492, loss: 9.97, 8000 train 89.56%
+ep 493, loss: 9.97, 8000 train 88.78%
+ep 494, loss: 9.94, 8000 train 89.20%
+ep 495, loss: 9.56, 8000 train 89.26%
+ep 496, loss: 9.54, 8000 train 89.59%
+ep 497, loss: 9.08, 8000 train 90.18%
+ep 498, loss: 9.65, 8000 train 89.42%
+ep 499, loss: 9.71, 8000 train 89.60%
+ep 500, loss: 9.61, 8000 train 89.59%
+   Model saved to checkModel.pth
+   Model saved to sub_500_89.58749999999999.pth
+ep 501, loss: 9.61, 8000 train 89.72%
+ep 502, loss: 9.92, 8000 train 88.92%
+ep 503, loss: 10.06, 8000 train 89.33%
+ep 504, loss: 9.54, 8000 train 89.64%
+ep 505, loss: 10.41, 8000 train 88.79%
+ep 506, loss: 9.61, 8000 train 89.42%
+ep 507, loss: 9.60, 8000 train 89.50%
+ep 508, loss: 9.48, 8000 train 89.62%
+ep 509, loss: 10.13, 8000 train 89.12%
+ep 510, loss: 9.65, 8000 train 89.40%
+   Model saved to checkModel.pth
+ep 511, loss: 9.87, 8000 train 88.90%
+ep 512, loss: 8.93, 8000 train 90.19%
+ep 513, loss: 9.58, 8000 train 89.64%
+ep 514, loss: 10.35, 8000 train 88.72%
+ep 515, loss: 9.44, 8000 train 89.59%
+ep 516, loss: 9.84, 8000 train 89.24%
+ep 517, loss: 9.23, 8000 train 89.91%
+ep 518, loss: 9.53, 8000 train 89.84%
+ep 519, loss: 10.24, 8000 train 88.61%
+ep 520, loss: 9.61, 8000 train 89.55%
+   Model saved to checkModel.pth
+ep 521, loss: 9.20, 8000 train 89.72%
+ep 522, loss: 9.32, 8000 train 89.92%
+ep 523, loss: 9.29, 8000 train 89.96%
+ep 524, loss: 9.08, 8000 train 90.42%
+ep 525, loss: 9.63, 8000 train 89.42%
+ep 526, loss: 9.43, 8000 train 90.11%
+ep 527, loss: 9.48, 8000 train 89.98%
+ep 528, loss: 9.03, 8000 train 90.25%
+ep 529, loss: 9.56, 8000 train 89.59%
+ep 530, loss: 10.05, 8000 train 89.19%
+   Model saved to checkModel.pth
+ep 531, loss: 9.29, 8000 train 89.88%
+ep 532, loss: 9.74, 8000 train 89.59%
+ep 533, loss: 10.06, 8000 train 89.18%
+ep 534, loss: 9.33, 8000 train 90.20%
+ep 535, loss: 9.42, 8000 train 89.88%
+ep 536, loss: 9.41, 8000 train 89.36%
+ep 537, loss: 9.37, 8000 train 89.81%
+ep 538, loss: 9.50, 8000 train 90.26%
+ep 539, loss: 9.13, 8000 train 90.36%
+ep 540, loss: 9.74, 8000 train 89.34%
+   Model saved to checkModel.pth
+ep 541, loss: 9.24, 8000 train 90.14%
+ep 542, loss: 8.96, 8000 train 89.91%
+ep 543, loss: 9.16, 8000 train 90.10%
+ep 544, loss: 8.95, 8000 train 89.94%
+ep 545, loss: 9.36, 8000 train 89.71%
+ep 546, loss: 9.33, 8000 train 89.84%
+ep 547, loss: 9.15, 8000 train 90.03%
+ep 548, loss: 9.38, 8000 train 89.56%
+ep 549, loss: 8.56, 8000 train 90.40%
+ep 550, loss: 9.48, 8000 train 90.16%
+   Model saved to checkModel.pth
+   Model saved to sub_550_90.1625.pth
+ep 551, loss: 9.24, 8000 train 90.34%
+ep 552, loss: 9.08, 8000 train 90.40%
+ep 553, loss: 9.17, 8000 train 90.21%
+ep 554, loss: 8.86, 8000 train 90.55%
+ep 555, loss: 9.10, 8000 train 90.10%
+ep 556, loss: 8.73, 8000 train 90.56%
+ep 557, loss: 9.00, 8000 train 90.38%
+ep 558, loss: 9.65, 8000 train 89.33%
+ep 559, loss: 8.84, 8000 train 90.50%
+ep 560, loss: 8.55, 8000 train 90.86%
+   Model saved to checkModel.pth
+ep 561, loss: 8.74, 8000 train 90.71%
+ep 562, loss: 8.92, 8000 train 90.34%
+ep 563, loss: 8.70, 8000 train 90.41%
+ep 564, loss: 8.95, 8000 train 90.67%
+ep 565, loss: 8.84, 8000 train 90.24%
+ep 566, loss: 9.25, 8000 train 90.20%
+ep 567, loss: 9.45, 8000 train 89.91%
+ep 568, loss: 8.94, 8000 train 90.05%
+ep 569, loss: 8.70, 8000 train 90.35%
+ep 570, loss: 8.32, 8000 train 90.81%
+   Model saved to checkModel.pth
+ep 571, loss: 8.79, 8000 train 90.62%
+ep 572, loss: 8.30, 8000 train 90.97%
+ep 573, loss: 8.19, 8000 train 90.90%
+ep 574, loss: 8.94, 8000 train 90.54%
+ep 575, loss: 8.87, 8000 train 90.38%
+ep 576, loss: 8.93, 8000 train 90.14%
+ep 577, loss: 8.44, 8000 train 90.74%
+ep 578, loss: 8.34, 8000 train 90.79%
+ep 579, loss: 8.96, 8000 train 90.30%
+ep 580, loss: 8.86, 8000 train 90.40%
+   Model saved to checkModel.pth
+ep 581, loss: 8.63, 8000 train 90.48%
+ep 582, loss: 8.87, 8000 train 90.31%
+ep 583, loss: 8.82, 8000 train 90.49%
+ep 584, loss: 8.56, 8000 train 90.81%
+ep 585, loss: 8.46, 8000 train 90.58%
+ep 586, loss: 8.89, 8000 train 90.46%
+ep 587, loss: 8.28, 8000 train 91.03%
+ep 588, loss: 8.35, 8000 train 90.86%
+ep 589, loss: 8.36, 8000 train 90.76%
+ep 590, loss: 8.15, 8000 train 90.91%
+   Model saved to checkModel.pth
+ep 591, loss: 8.05, 8000 train 91.61%
+ep 592, loss: 8.63, 8000 train 90.30%
+ep 593, loss: 8.27, 8000 train 90.70%
+ep 594, loss: 8.27, 8000 train 91.14%
+ep 595, loss: 8.27, 8000 train 91.09%
+ep 596, loss: 8.29, 8000 train 91.14%
+ep 597, loss: 8.77, 8000 train 90.30%
+ep 598, loss: 8.60, 8000 train 91.14%
+ep 599, loss: 8.81, 8000 train 90.38%
+ep 600, loss: 9.03, 8000 train 90.25%
+   Model saved to checkModel.pth
+   Model saved to sub_600_90.25.pth
+ep 601, loss: 8.55, 8000 train 90.86%
+ep 602, loss: 8.47, 8000 train 91.05%
+ep 603, loss: 8.59, 8000 train 91.04%
+ep 604, loss: 8.73, 8000 train 90.44%
+ep 605, loss: 8.58, 8000 train 90.66%
+ep 606, loss: 8.55, 8000 train 90.83%
+ep 607, loss: 8.02, 8000 train 91.24%
+ep 608, loss: 8.09, 8000 train 91.07%
+ep 609, loss: 8.58, 8000 train 90.62%
+ep 610, loss: 8.04, 8000 train 91.07%
+   Model saved to checkModel.pth
+ep 611, loss: 8.36, 8000 train 90.64%
+ep 612, loss: 8.86, 8000 train 90.26%
+ep 613, loss: 8.34, 8000 train 91.24%
+ep 614, loss: 8.28, 8000 train 91.15%
+ep 615, loss: 8.69, 8000 train 90.64%
+ep 616, loss: 8.63, 8000 train 90.71%
+ep 617, loss: 8.48, 8000 train 90.83%
+ep 618, loss: 8.71, 8000 train 90.83%
+ep 619, loss: 8.80, 8000 train 90.97%
+ep 620, loss: 8.52, 8000 train 91.15%
+   Model saved to checkModel.pth
+ep 621, loss: 8.93, 8000 train 90.53%
+ep 622, loss: 8.53, 8000 train 90.72%
+ep 623, loss: 8.74, 8000 train 90.64%
+ep 624, loss: 8.61, 8000 train 90.84%
+ep 625, loss: 8.07, 8000 train 91.40%
+ep 626, loss: 8.00, 8000 train 91.16%
+ep 627, loss: 8.04, 8000 train 91.39%
+ep 628, loss: 8.40, 8000 train 90.75%
+ep 629, loss: 8.27, 8000 train 91.00%
+ep 630, loss: 8.16, 8000 train 91.44%
+   Model saved to checkModel.pth
+ep 631, loss: 8.40, 8000 train 91.12%
+ep 632, loss: 8.30, 8000 train 91.17%
+ep 633, loss: 8.19, 8000 train 91.16%
+ep 634, loss: 8.12, 8000 train 91.10%
+ep 635, loss: 8.07, 8000 train 91.15%
+ep 636, loss: 8.02, 8000 train 91.84%
+ep 637, loss: 8.45, 8000 train 90.76%
+ep 638, loss: 8.28, 8000 train 91.05%
+ep 639, loss: 8.06, 8000 train 91.04%
+ep 640, loss: 8.08, 8000 train 91.31%
+   Model saved to checkModel.pth
+ep 641, loss: 7.96, 8000 train 91.24%
+ep 642, loss: 8.05, 8000 train 91.31%
+ep 643, loss: 8.10, 8000 train 90.91%
+ep 644, loss: 7.79, 8000 train 91.75%
+ep 645, loss: 8.05, 8000 train 91.38%
+ep 646, loss: 8.05, 8000 train 91.14%
+ep 647, loss: 8.11, 8000 train 90.94%
+ep 648, loss: 8.15, 8000 train 91.47%
+ep 649, loss: 8.00, 8000 train 91.60%
+ep 650, loss: 8.64, 8000 train 90.69%
+   Model saved to checkModel.pth
+   Model saved to sub_650_90.6875.pth
+ep 651, loss: 8.09, 8000 train 91.38%
+ep 652, loss: 7.72, 8000 train 91.57%
+ep 653, loss: 7.97, 8000 train 91.05%
+ep 654, loss: 7.76, 8000 train 91.27%
+ep 655, loss: 7.97, 8000 train 91.06%
+ep 656, loss: 8.08, 8000 train 91.31%
+ep 657, loss: 8.10, 8000 train 91.31%
+ep 658, loss: 7.81, 8000 train 91.46%
+ep 659, loss: 7.91, 8000 train 91.25%
+ep 660, loss: 8.12, 8000 train 91.09%
+   Model saved to checkModel.pth
+ep 661, loss: 8.08, 8000 train 91.36%
+ep 662, loss: 7.54, 8000 train 91.64%
+ep 663, loss: 8.06, 8000 train 91.22%
+ep 664, loss: 7.52, 8000 train 91.83%
+ep 665, loss: 7.64, 8000 train 91.40%
+ep 666, loss: 7.70, 8000 train 91.62%
+ep 667, loss: 8.04, 8000 train 91.20%
+ep 668, loss: 7.74, 8000 train 91.71%
+ep 669, loss: 7.66, 8000 train 91.67%
+ep 670, loss: 8.08, 8000 train 91.30%
+   Model saved to checkModel.pth
+ep 671, loss: 8.24, 8000 train 90.91%
+ep 672, loss: 7.60, 8000 train 91.75%
+ep 673, loss: 7.57, 8000 train 91.90%
+ep 674, loss: 8.02, 8000 train 91.33%
+ep 675, loss: 7.86, 8000 train 91.97%
+ep 676, loss: 7.62, 8000 train 91.75%
+ep 677, loss: 7.62, 8000 train 91.79%
+ep 678, loss: 7.53, 8000 train 91.89%
+ep 679, loss: 7.67, 8000 train 91.92%
+ep 680, loss: 7.82, 8000 train 91.64%
+   Model saved to checkModel.pth
+ep 681, loss: 8.03, 8000 train 91.66%
+ep 682, loss: 7.53, 8000 train 91.83%
+ep 683, loss: 7.53, 8000 train 92.06%
+ep 684, loss: 7.40, 8000 train 92.00%
+ep 685, loss: 7.65, 8000 train 91.85%
+ep 686, loss: 7.87, 8000 train 92.04%
+ep 687, loss: 7.49, 8000 train 92.00%
+ep 688, loss: 7.83, 8000 train 91.76%
+ep 689, loss: 7.38, 8000 train 92.15%
+ep 690, loss: 7.53, 8000 train 91.92%
+   Model saved to checkModel.pth
+ep 691, loss: 7.46, 8000 train 91.80%
+ep 692, loss: 7.14, 8000 train 92.38%
+ep 693, loss: 7.40, 8000 train 92.29%
+ep 694, loss: 7.38, 8000 train 91.74%
+ep 695, loss: 7.50, 8000 train 92.00%
+ep 696, loss: 7.64, 8000 train 92.03%
+ep 697, loss: 7.47, 8000 train 92.03%
+ep 698, loss: 7.69, 8000 train 91.46%
+ep 699, loss: 7.62, 8000 train 91.60%
+ep 700, loss: 7.55, 8000 train 92.07%
+   Model saved to checkModel.pth
+   Model saved to sub_700_92.07499999999999.pth
+ep 701, loss: 7.62, 8000 train 92.06%
+ep 702, loss: 7.82, 8000 train 91.64%
+ep 703, loss: 7.42, 8000 train 92.12%
+ep 704, loss: 7.56, 8000 train 91.85%
+ep 705, loss: 7.79, 8000 train 91.71%
+ep 706, loss: 7.89, 8000 train 91.38%
+ep 707, loss: 8.08, 8000 train 91.64%
+ep 708, loss: 7.13, 8000 train 92.44%
+ep 709, loss: 7.36, 8000 train 91.77%
+ep 710, loss: 7.41, 8000 train 91.88%
+   Model saved to checkModel.pth
+ep 711, loss: 7.41, 8000 train 92.20%
+ep 712, loss: 7.54, 8000 train 91.90%
+ep 713, loss: 7.69, 8000 train 91.49%
+ep 714, loss: 7.22, 8000 train 91.85%
+ep 715, loss: 7.54, 8000 train 91.89%
+ep 716, loss: 7.65, 8000 train 91.97%
+ep 717, loss: 7.32, 8000 train 92.00%
+ep 718, loss: 7.66, 8000 train 91.91%
+ep 719, loss: 7.89, 8000 train 91.29%
+ep 720, loss: 7.37, 8000 train 91.74%
+   Model saved to checkModel.pth
+ep 721, loss: 6.83, 8000 train 92.50%
+ep 722, loss: 7.37, 8000 train 91.95%
+ep 723, loss: 7.43, 8000 train 91.80%
+ep 724, loss: 7.47, 8000 train 92.17%
+ep 725, loss: 7.58, 8000 train 91.74%
+ep 726, loss: 7.15, 8000 train 92.50%
+ep 727, loss: 7.02, 8000 train 92.27%
+ep 728, loss: 6.99, 8000 train 92.47%
+ep 729, loss: 6.91, 8000 train 92.38%
+ep 730, loss: 7.40, 8000 train 91.88%
+   Model saved to checkModel.pth
+ep 731, loss: 7.37, 8000 train 92.45%
+ep 732, loss: 7.82, 8000 train 91.59%
+ep 733, loss: 7.27, 8000 train 92.19%
+ep 734, loss: 7.50, 8000 train 92.01%
+ep 735, loss: 7.28, 8000 train 91.94%
+ep 736, loss: 7.29, 8000 train 92.20%
+ep 737, loss: 7.17, 8000 train 92.22%
+ep 738, loss: 7.59, 8000 train 91.81%
+ep 739, loss: 7.27, 8000 train 92.29%
+ep 740, loss: 6.91, 8000 train 92.79%
+   Model saved to checkModel.pth
+ep 741, loss: 7.07, 8000 train 92.31%
+ep 742, loss: 7.14, 8000 train 92.07%
+ep 743, loss: 6.86, 8000 train 92.26%
+ep 744, loss: 6.75, 8000 train 93.01%
+ep 745, loss: 6.79, 8000 train 92.69%
+ep 746, loss: 7.13, 8000 train 92.53%
+ep 747, loss: 7.26, 8000 train 92.03%
+ep 748, loss: 7.36, 8000 train 91.92%
+ep 749, loss: 6.94, 8000 train 92.45%
+ep 750, loss: 7.17, 8000 train 92.38%
+   Model saved to checkModel.pth
+   Model saved to sub_750_92.375.pth
+ep 751, loss: 7.49, 8000 train 92.03%
+ep 752, loss: 7.27, 8000 train 92.19%
+ep 753, loss: 7.69, 8000 train 91.99%
+ep 754, loss: 7.31, 8000 train 92.20%
+ep 755, loss: 7.24, 8000 train 92.15%
+ep 756, loss: 6.81, 8000 train 92.60%
+ep 757, loss: 7.00, 8000 train 92.36%
+ep 758, loss: 6.98, 8000 train 92.44%
+ep 759, loss: 7.25, 8000 train 92.00%
+ep 760, loss: 7.40, 8000 train 92.31%
+   Model saved to checkModel.pth
+ep 761, loss: 6.92, 8000 train 92.47%
+ep 762, loss: 7.18, 8000 train 92.27%
+ep 763, loss: 7.27, 8000 train 92.04%
+ep 764, loss: 7.15, 8000 train 92.54%
+ep 765, loss: 7.00, 8000 train 92.56%
+ep 766, loss: 7.03, 8000 train 92.71%
+ep 767, loss: 6.64, 8000 train 92.58%
+ep 768, loss: 7.26, 8000 train 92.21%
+ep 769, loss: 7.36, 8000 train 92.21%
+ep 770, loss: 7.23, 8000 train 92.42%
+   Model saved to checkModel.pth
+ep 771, loss: 6.90, 8000 train 92.45%
+ep 772, loss: 6.83, 8000 train 92.61%
+ep 773, loss: 6.38, 8000 train 93.08%
+ep 774, loss: 6.67, 8000 train 92.76%
+ep 775, loss: 7.06, 8000 train 92.31%
+ep 776, loss: 6.99, 8000 train 92.70%
+ep 777, loss: 6.73, 8000 train 92.84%
+ep 778, loss: 7.14, 8000 train 92.49%
+ep 779, loss: 6.91, 8000 train 92.83%
+ep 780, loss: 7.45, 8000 train 91.69%
+   Model saved to checkModel.pth
+ep 781, loss: 7.20, 8000 train 92.26%
+ep 782, loss: 7.28, 8000 train 92.30%
+ep 783, loss: 7.66, 8000 train 91.69%
+ep 784, loss: 7.02, 8000 train 92.53%
+ep 785, loss: 6.30, 8000 train 92.92%
+ep 786, loss: 6.69, 8000 train 92.59%
+ep 787, loss: 6.78, 8000 train 92.61%
+ep 788, loss: 6.76, 8000 train 92.81%
+ep 789, loss: 6.87, 8000 train 92.94%
+ep 790, loss: 7.03, 8000 train 92.65%
+   Model saved to checkModel.pth
+ep 791, loss: 7.67, 8000 train 91.99%
+ep 792, loss: 7.30, 8000 train 92.41%
+ep 793, loss: 6.92, 8000 train 92.71%
+ep 794, loss: 6.77, 8000 train 92.67%
+ep 795, loss: 6.64, 8000 train 92.91%
+ep 796, loss: 6.71, 8000 train 92.55%
+ep 797, loss: 6.65, 8000 train 93.16%
+ep 798, loss: 6.77, 8000 train 92.53%
+ep 799, loss: 6.49, 8000 train 92.96%
+ep 800, loss: 6.06, 8000 train 93.36%
+   Model saved to checkModel.pth
+   Model saved to sub_800_93.3625.pth
+ep 801, loss: 6.67, 8000 train 92.83%
+ep 802, loss: 7.05, 8000 train 92.36%
+ep 803, loss: 6.78, 8000 train 93.11%
+ep 804, loss: 6.92, 8000 train 92.59%
+ep 805, loss: 7.18, 8000 train 92.53%
+ep 806, loss: 7.33, 8000 train 92.25%
+ep 807, loss: 7.12, 8000 train 92.51%
+ep 808, loss: 6.33, 8000 train 93.27%
+ep 809, loss: 7.00, 8000 train 92.51%
+ep 810, loss: 6.43, 8000 train 92.85%
+   Model saved to checkModel.pth
+ep 811, loss: 6.91, 8000 train 92.53%
+ep 812, loss: 5.97, 8000 train 93.42%
+ep 813, loss: 6.51, 8000 train 92.91%
+ep 814, loss: 6.97, 8000 train 92.54%
+ep 815, loss: 6.51, 8000 train 93.09%
+ep 816, loss: 6.78, 8000 train 92.73%
+ep 817, loss: 6.44, 8000 train 93.11%
+ep 818, loss: 6.64, 8000 train 92.90%
+ep 819, loss: 6.67, 8000 train 92.58%
+ep 820, loss: 6.75, 8000 train 92.47%
+   Model saved to checkModel.pth
+ep 821, loss: 6.28, 8000 train 93.19%
+ep 822, loss: 6.50, 8000 train 92.88%
+ep 823, loss: 6.51, 8000 train 93.30%
+ep 824, loss: 6.55, 8000 train 93.35%
+ep 825, loss: 6.31, 8000 train 93.12%
+ep 826, loss: 6.30, 8000 train 92.99%
+ep 827, loss: 6.79, 8000 train 92.46%
+ep 828, loss: 6.99, 8000 train 92.53%
+ep 829, loss: 6.11, 8000 train 93.61%
+ep 830, loss: 6.43, 8000 train 92.64%
+   Model saved to checkModel.pth
+ep 831, loss: 6.31, 8000 train 93.20%
+ep 832, loss: 6.99, 8000 train 92.07%
+ep 833, loss: 6.55, 8000 train 92.84%
+ep 834, loss: 6.32, 8000 train 93.24%
+ep 835, loss: 7.01, 8000 train 92.66%
+ep 836, loss: 6.40, 8000 train 92.90%
+ep 837, loss: 6.51, 8000 train 93.12%
+ep 838, loss: 6.37, 8000 train 92.79%
+ep 839, loss: 6.44, 8000 train 93.35%
+ep 840, loss: 6.47, 8000 train 93.10%
+   Model saved to checkModel.pth
+ep 841, loss: 6.63, 8000 train 92.91%
+ep 842, loss: 7.25, 8000 train 92.35%
+ep 843, loss: 6.65, 8000 train 93.15%
+ep 844, loss: 7.08, 8000 train 92.44%
+ep 845, loss: 6.39, 8000 train 93.05%
+ep 846, loss: 6.21, 8000 train 93.41%
+ep 847, loss: 6.35, 8000 train 93.23%
+ep 848, loss: 6.29, 8000 train 93.24%
+ep 849, loss: 6.03, 8000 train 93.51%
+ep 850, loss: 6.63, 8000 train 92.95%
+   Model saved to checkModel.pth
+   Model saved to sub_850_92.95.pth
+ep 851, loss: 6.72, 8000 train 92.56%
+ep 852, loss: 6.62, 8000 train 92.96%
+ep 853, loss: 6.54, 8000 train 93.00%
+ep 854, loss: 6.55, 8000 train 93.10%
+ep 855, loss: 6.40, 8000 train 93.09%
+ep 856, loss: 6.50, 8000 train 93.05%
+ep 857, loss: 6.06, 8000 train 93.15%
+ep 858, loss: 6.20, 8000 train 93.26%
+ep 859, loss: 6.66, 8000 train 92.84%
+ep 860, loss: 5.65, 8000 train 93.89%
+   Model saved to checkModel.pth
+ep 861, loss: 6.35, 8000 train 93.21%
+ep 862, loss: 6.56, 8000 train 93.00%
+ep 863, loss: 6.28, 8000 train 93.31%
+ep 864, loss: 6.32, 8000 train 93.38%
+ep 865, loss: 6.91, 8000 train 92.83%
+ep 866, loss: 6.63, 8000 train 92.74%
+ep 867, loss: 6.54, 8000 train 92.77%
+ep 868, loss: 6.40, 8000 train 92.90%
+ep 869, loss: 6.44, 8000 train 93.39%
+ep 870, loss: 6.57, 8000 train 93.29%
+   Model saved to checkModel.pth
+ep 871, loss: 6.53, 8000 train 93.00%
+ep 872, loss: 6.04, 8000 train 93.73%
+ep 873, loss: 5.81, 8000 train 93.77%
+ep 874, loss: 6.22, 8000 train 93.30%
+ep 875, loss: 6.16, 8000 train 93.12%
+ep 876, loss: 6.73, 8000 train 92.92%
+ep 877, loss: 6.07, 8000 train 93.66%
+ep 878, loss: 6.15, 8000 train 93.65%
+ep 879, loss: 6.55, 8000 train 92.90%
+ep 880, loss: 6.25, 8000 train 93.00%
+   Model saved to checkModel.pth
+ep 881, loss: 5.83, 8000 train 93.50%
+ep 882, loss: 6.08, 8000 train 93.75%
+ep 883, loss: 5.73, 8000 train 93.77%
+ep 884, loss: 6.80, 8000 train 92.70%
+ep 885, loss: 6.69, 8000 train 92.88%
+ep 886, loss: 6.45, 8000 train 92.95%
+ep 887, loss: 6.14, 8000 train 93.53%
+ep 888, loss: 6.44, 8000 train 93.00%
+ep 889, loss: 6.23, 8000 train 93.19%
+ep 890, loss: 6.24, 8000 train 93.25%
+   Model saved to checkModel.pth
+ep 891, loss: 6.40, 8000 train 93.26%
+ep 892, loss: 6.30, 8000 train 93.16%
+ep 893, loss: 6.47, 8000 train 93.11%
+ep 894, loss: 6.46, 8000 train 93.21%
+ep 895, loss: 6.15, 8000 train 93.55%
+ep 896, loss: 6.35, 8000 train 93.31%
+ep 897, loss: 6.06, 8000 train 93.33%
+ep 898, loss: 6.49, 8000 train 93.17%
+ep 899, loss: 6.03, 8000 train 93.58%
+ep 900, loss: 5.95, 8000 train 93.64%
+   Model saved to checkModel.pth
+   Model saved to sub_900_93.63749999999999.pth
+ep 901, loss: 6.01, 8000 train 93.56%
+ep 902, loss: 5.82, 8000 train 93.60%
+ep 903, loss: 6.13, 8000 train 93.38%
+ep 904, loss: 6.55, 8000 train 93.23%
+ep 905, loss: 6.17, 8000 train 93.38%
+ep 906, loss: 5.86, 8000 train 93.88%
+ep 907, loss: 6.04, 8000 train 93.42%
+ep 908, loss: 5.82, 8000 train 93.89%
+ep 909, loss: 5.56, 8000 train 94.00%
+ep 910, loss: 5.88, 8000 train 93.50%
+   Model saved to checkModel.pth
+ep 911, loss: 5.97, 8000 train 93.58%
+ep 912, loss: 5.97, 8000 train 93.80%
+ep 913, loss: 6.25, 8000 train 93.12%
+ep 914, loss: 6.00, 8000 train 93.21%
+ep 915, loss: 5.59, 8000 train 93.95%
+ep 916, loss: 5.93, 8000 train 93.58%
+ep 917, loss: 5.94, 8000 train 93.30%
+ep 918, loss: 6.09, 8000 train 93.92%
+ep 919, loss: 5.71, 8000 train 93.91%
+ep 920, loss: 5.79, 8000 train 93.75%
+   Model saved to checkModel.pth
+ep 921, loss: 6.15, 8000 train 93.61%
+ep 922, loss: 5.95, 8000 train 93.67%
+ep 923, loss: 5.90, 8000 train 93.50%
+ep 924, loss: 5.74, 8000 train 93.83%
+ep 925, loss: 6.03, 8000 train 93.50%
+ep 926, loss: 6.58, 8000 train 93.23%
+ep 927, loss: 6.34, 8000 train 93.31%
+ep 928, loss: 6.02, 8000 train 93.76%
+ep 929, loss: 5.72, 8000 train 94.05%
+ep 930, loss: 6.61, 8000 train 93.06%
+   Model saved to checkModel.pth
+ep 931, loss: 5.60, 8000 train 93.90%
+ep 932, loss: 5.87, 8000 train 93.86%
+ep 933, loss: 5.83, 8000 train 93.86%
+ep 934, loss: 5.83, 8000 train 93.85%
+ep 935, loss: 5.71, 8000 train 93.74%
+ep 936, loss: 5.74, 8000 train 93.77%
+ep 937, loss: 5.75, 8000 train 94.10%
+ep 938, loss: 6.00, 8000 train 93.44%
+ep 939, loss: 6.11, 8000 train 93.84%
+ep 940, loss: 5.92, 8000 train 93.45%
+   Model saved to checkModel.pth
+ep 941, loss: 6.09, 8000 train 93.33%
+ep 942, loss: 6.42, 8000 train 93.29%
+ep 943, loss: 6.13, 8000 train 93.45%
+ep 944, loss: 6.25, 8000 train 93.26%
+ep 945, loss: 5.72, 8000 train 93.42%
+ep 946, loss: 6.15, 8000 train 93.54%
+ep 947, loss: 6.31, 8000 train 93.40%
+ep 948, loss: 6.05, 8000 train 93.41%
+ep 949, loss: 5.56, 8000 train 93.95%
+ep 950, loss: 6.08, 8000 train 93.38%
+   Model saved to checkModel.pth
+   Model saved to sub_950_93.375.pth
+ep 951, loss: 5.80, 8000 train 93.89%
+ep 952, loss: 5.64, 8000 train 93.58%
+ep 953, loss: 5.53, 8000 train 94.09%
+ep 954, loss: 5.58, 8000 train 94.23%
+ep 955, loss: 5.83, 8000 train 93.69%
+ep 956, loss: 6.38, 8000 train 93.12%
+ep 957, loss: 5.97, 8000 train 93.66%
+ep 958, loss: 5.98, 8000 train 93.80%
+ep 959, loss: 6.45, 8000 train 93.20%
+ep 960, loss: 5.72, 8000 train 94.03%
+   Model saved to checkModel.pth
+ep 961, loss: 5.90, 8000 train 93.88%
+ep 962, loss: 6.21, 8000 train 93.51%
+ep 963, loss: 5.82, 8000 train 93.56%
+ep 964, loss: 5.63, 8000 train 93.80%
+ep 965, loss: 5.65, 8000 train 94.11%
+ep 966, loss: 5.60, 8000 train 94.09%
+ep 967, loss: 5.34, 8000 train 94.35%
+ep 968, loss: 5.80, 8000 train 94.08%
+ep 969, loss: 6.25, 8000 train 93.53%
+ep 970, loss: 5.94, 8000 train 93.65%
+   Model saved to checkModel.pth
+ep 971, loss: 5.36, 8000 train 94.42%
+ep 972, loss: 5.52, 8000 train 94.04%
+ep 973, loss: 5.83, 8000 train 93.86%
+ep 974, loss: 5.75, 8000 train 93.90%
+ep 975, loss: 5.48, 8000 train 94.01%
+ep 976, loss: 5.44, 8000 train 93.97%
+ep 977, loss: 5.34, 8000 train 94.14%
+ep 978, loss: 6.05, 8000 train 93.74%
+ep 979, loss: 5.81, 8000 train 93.59%
+ep 980, loss: 5.55, 8000 train 93.92%
+   Model saved to checkModel.pth
+ep 981, loss: 5.75, 8000 train 93.77%
+ep 982, loss: 5.82, 8000 train 93.74%
+ep 983, loss: 5.66, 8000 train 93.92%
+ep 984, loss: 5.77, 8000 train 93.95%
+ep 985, loss: 5.66, 8000 train 93.88%
+ep 986, loss: 5.85, 8000 train 93.79%
+ep 987, loss: 6.09, 8000 train 93.75%
+ep 988, loss: 5.90, 8000 train 93.56%
+ep 989, loss: 6.37, 8000 train 93.45%
+ep 990, loss: 5.61, 8000 train 93.95%
+   Model saved to checkModel.pth
+ep 991, loss: 5.40, 8000 train 93.91%
+ep 992, loss: 5.80, 8000 train 93.74%
+ep 993, loss: 5.50, 8000 train 93.75%
+ep 994, loss: 5.51, 8000 train 93.95%
+ep 995, loss: 5.63, 8000 train 94.01%
+ep 996, loss: 5.48, 8000 train 94.33%
+ep 997, loss: 6.02, 8000 train 93.46%
+ep 998, loss: 6.18, 8000 train 93.59%
+ep 999, loss: 5.32, 8000 train 94.33%
+ep 1000, loss: 5.80, 8000 train 93.55%
+   Model saved to checkModel.pth
+   Model saved to sub_1000_93.55.pth
+ep 1001, loss: 5.72, 8000 train 93.92%
+ep 1002, loss: 5.40, 8000 train 94.56%
+ep 1003, loss: 5.29, 8000 train 94.42%
+ep 1004, loss: 5.33, 8000 train 94.25%
+ep 1005, loss: 5.16, 8000 train 94.47%
+ep 1006, loss: 5.63, 8000 train 94.05%
+ep 1007, loss: 5.82, 8000 train 93.84%
+ep 1008, loss: 5.24, 8000 train 94.24%
+ep 1009, loss: 5.47, 8000 train 94.27%
+ep 1010, loss: 5.34, 8000 train 94.35%
+   Model saved to checkModel.pth
+ep 1011, loss: 5.46, 8000 train 94.16%
+ep 1012, loss: 5.59, 8000 train 94.15%
+ep 1013, loss: 5.90, 8000 train 93.91%
+ep 1014, loss: 5.43, 8000 train 93.92%
+ep 1015, loss: 5.31, 8000 train 94.21%
+ep 1016, loss: 5.33, 8000 train 94.10%
+ep 1017, loss: 5.91, 8000 train 93.85%
+ep 1018, loss: 5.55, 8000 train 94.17%
+ep 1019, loss: 5.44, 8000 train 94.35%
+ep 1020, loss: 5.70, 8000 train 93.95%
+   Model saved to checkModel.pth
+ep 1021, loss: 5.38, 8000 train 93.83%
+ep 1022, loss: 5.36, 8000 train 94.19%
+ep 1023, loss: 5.31, 8000 train 94.21%
+ep 1024, loss: 6.03, 8000 train 93.30%
+ep 1025, loss: 5.23, 8000 train 94.60%
+ep 1026, loss: 5.63, 8000 train 93.70%
+ep 1027, loss: 5.56, 8000 train 94.09%
+ep 1028, loss: 5.48, 8000 train 93.97%
+ep 1029, loss: 5.03, 8000 train 94.47%
+ep 1030, loss: 5.78, 8000 train 94.09%
+   Model saved to checkModel.pth
+ep 1031, loss: 5.99, 8000 train 93.76%
+ep 1032, loss: 5.27, 8000 train 94.41%
+ep 1033, loss: 5.55, 8000 train 93.81%
+ep 1034, loss: 5.53, 8000 train 94.26%
+ep 1035, loss: 5.33, 8000 train 94.42%
+ep 1036, loss: 5.51, 8000 train 94.10%
+ep 1037, loss: 5.14, 8000 train 94.21%
+ep 1038, loss: 5.80, 8000 train 93.77%
+ep 1039, loss: 5.07, 8000 train 94.74%
+ep 1040, loss: 5.63, 8000 train 93.96%
+   Model saved to checkModel.pth
+ep 1041, loss: 5.60, 8000 train 94.04%
+ep 1042, loss: 5.27, 8000 train 94.41%
+ep 1043, loss: 5.43, 8000 train 94.16%
+ep 1044, loss: 5.56, 8000 train 94.31%
+ep 1045, loss: 5.62, 8000 train 94.12%
+ep 1046, loss: 5.41, 8000 train 93.94%
+ep 1047, loss: 5.46, 8000 train 93.88%
+ep 1048, loss: 5.15, 8000 train 94.26%
+ep 1049, loss: 5.16, 8000 train 94.75%
+ep 1050, loss: 5.31, 8000 train 94.46%
+   Model saved to checkModel.pth
+   Model saved to sub_1050_94.4625.pth
+ep 1051, loss: 6.00, 8000 train 93.69%
+ep 1052, loss: 6.01, 8000 train 93.50%
+ep 1053, loss: 5.46, 8000 train 94.04%
+ep 1054, loss: 5.61, 8000 train 93.89%
+ep 1055, loss: 5.02, 8000 train 94.86%
+ep 1056, loss: 5.26, 8000 train 94.45%
+ep 1057, loss: 5.53, 8000 train 94.25%
+ep 1058, loss: 5.42, 8000 train 94.26%
+ep 1059, loss: 5.33, 8000 train 94.30%
+ep 1060, loss: 5.69, 8000 train 93.88%
+   Model saved to checkModel.pth
+ep 1061, loss: 5.46, 8000 train 94.15%
+ep 1062, loss: 5.23, 8000 train 94.21%
+ep 1063, loss: 5.62, 8000 train 94.03%
+ep 1064, loss: 5.18, 8000 train 94.46%
+ep 1065, loss: 5.27, 8000 train 94.23%
+ep 1066, loss: 5.66, 8000 train 94.24%
+ep 1067, loss: 5.68, 8000 train 93.91%
+ep 1068, loss: 5.29, 8000 train 94.53%
+ep 1069, loss: 5.59, 8000 train 93.99%
+ep 1070, loss: 5.29, 8000 train 94.38%
+   Model saved to checkModel.pth
+ep 1071, loss: 5.57, 8000 train 94.20%
+ep 1072, loss: 5.28, 8000 train 94.39%
+ep 1073, loss: 5.22, 8000 train 94.39%
+ep 1074, loss: 5.26, 8000 train 94.56%
+ep 1075, loss: 5.45, 8000 train 94.20%
+ep 1076, loss: 5.23, 8000 train 94.69%
+ep 1077, loss: 5.75, 8000 train 93.67%
+ep 1078, loss: 5.54, 8000 train 94.17%
+ep 1079, loss: 5.02, 8000 train 94.53%
+ep 1080, loss: 5.17, 8000 train 94.46%
+   Model saved to checkModel.pth
+ep 1081, loss: 5.41, 8000 train 94.44%
+ep 1082, loss: 5.29, 8000 train 94.34%
+ep 1083, loss: 5.33, 8000 train 94.33%
+ep 1084, loss: 5.47, 8000 train 94.21%
+ep 1085, loss: 5.80, 8000 train 93.92%
+ep 1086, loss: 5.13, 8000 train 94.44%
+ep 1087, loss: 5.17, 8000 train 94.66%
+ep 1088, loss: 5.18, 8000 train 94.55%
+ep 1089, loss: 5.40, 8000 train 94.25%
+ep 1090, loss: 5.89, 8000 train 93.76%
+   Model saved to checkModel.pth
+ep 1091, loss: 4.94, 8000 train 94.88%
+ep 1092, loss: 4.78, 8000 train 95.04%
+ep 1093, loss: 5.17, 8000 train 94.51%
+ep 1094, loss: 5.29, 8000 train 94.27%
+ep 1095, loss: 4.90, 8000 train 94.80%
+ep 1096, loss: 5.09, 8000 train 94.70%
+ep 1097, loss: 5.14, 8000 train 94.49%
+ep 1098, loss: 5.46, 8000 train 94.16%
+ep 1099, loss: 5.23, 8000 train 94.31%
+ep 1100, loss: 5.63, 8000 train 94.16%
+   Model saved to checkModel.pth
+   Model saved to sub_1100_94.16250000000001.pth
+ep 1101, loss: 5.70, 8000 train 93.88%
+ep 1102, loss: 5.65, 8000 train 93.74%
+ep 1103, loss: 5.06, 8000 train 94.39%
+ep 1104, loss: 5.01, 8000 train 94.71%
+ep 1105, loss: 5.69, 8000 train 93.69%
+ep 1106, loss: 5.18, 8000 train 94.10%
+ep 1107, loss: 4.97, 8000 train 94.59%
+ep 1108, loss: 4.96, 8000 train 94.73%
+ep 1109, loss: 4.82, 8000 train 94.83%
+ep 1110, loss: 4.71, 8000 train 94.65%
+   Model saved to checkModel.pth
+ep 1111, loss: 4.92, 8000 train 94.77%
+ep 1112, loss: 4.70, 8000 train 95.08%
+ep 1113, loss: 5.35, 8000 train 94.24%
+ep 1114, loss: 4.97, 8000 train 94.44%
+ep 1115, loss: 5.40, 8000 train 94.25%
+ep 1116, loss: 5.29, 8000 train 94.46%
+ep 1117, loss: 5.41, 8000 train 94.44%
+ep 1118, loss: 5.38, 8000 train 94.41%
+ep 1119, loss: 5.68, 8000 train 93.97%
+ep 1120, loss: 5.37, 8000 train 94.19%
+   Model saved to checkModel.pth
+ep 1121, loss: 5.33, 8000 train 94.30%
+ep 1122, loss: 5.15, 8000 train 94.53%
+ep 1123, loss: 5.08, 8000 train 94.71%
+ep 1124, loss: 5.06, 8000 train 94.64%
+ep 1125, loss: 5.08, 8000 train 94.67%
+ep 1126, loss: 5.18, 8000 train 94.36%
+ep 1127, loss: 5.59, 8000 train 94.39%
+ep 1128, loss: 5.46, 8000 train 94.38%
+ep 1129, loss: 5.78, 8000 train 93.89%
+ep 1130, loss: 5.15, 8000 train 94.26%
+   Model saved to checkModel.pth
+ep 1131, loss: 5.20, 8000 train 94.56%
+ep 1132, loss: 4.71, 8000 train 95.15%
+ep 1133, loss: 5.11, 8000 train 94.30%
+ep 1134, loss: 4.70, 8000 train 94.89%
+ep 1135, loss: 5.23, 8000 train 94.36%
+ep 1136, loss: 5.22, 8000 train 94.25%
+ep 1137, loss: 5.48, 8000 train 94.10%
+ep 1138, loss: 4.69, 8000 train 94.92%
+ep 1139, loss: 4.62, 8000 train 94.95%
+ep 1140, loss: 5.08, 8000 train 94.56%
+   Model saved to checkModel.pth
+ep 1141, loss: 5.00, 8000 train 94.56%
+ep 1142, loss: 5.03, 8000 train 94.38%
+ep 1143, loss: 5.00, 8000 train 94.79%
+ep 1144, loss: 5.01, 8000 train 94.77%
+ep 1145, loss: 5.16, 8000 train 94.45%
+ep 1146, loss: 5.31, 8000 train 94.47%
+ep 1147, loss: 5.19, 8000 train 94.46%
+ep 1148, loss: 4.99, 8000 train 94.39%
+ep 1149, loss: 4.90, 8000 train 94.84%
+ep 1150, loss: 5.31, 8000 train 94.08%
+   Model saved to checkModel.pth
+   Model saved to sub_1150_94.075.pth
+ep 1151, loss: 4.92, 8000 train 94.77%
+ep 1152, loss: 5.30, 8000 train 94.39%
+ep 1153, loss: 5.35, 8000 train 94.45%
+ep 1154, loss: 5.07, 8000 train 94.44%
+ep 1155, loss: 4.72, 8000 train 94.89%
+ep 1156, loss: 4.75, 8000 train 94.65%
+ep 1157, loss: 4.87, 8000 train 94.90%
+ep 1158, loss: 5.10, 8000 train 94.51%
+ep 1159, loss: 5.01, 8000 train 94.66%
+ep 1160, loss: 4.89, 8000 train 94.97%
+   Model saved to checkModel.pth
+ep 1161, loss: 5.05, 8000 train 94.35%
+ep 1162, loss: 5.09, 8000 train 94.45%
+ep 1163, loss: 5.23, 8000 train 94.40%
+ep 1164, loss: 4.94, 8000 train 94.84%
+ep 1165, loss: 4.91, 8000 train 94.74%
+ep 1166, loss: 4.81, 8000 train 94.99%
+ep 1167, loss: 5.28, 8000 train 94.49%
+ep 1168, loss: 5.05, 8000 train 94.71%
+ep 1169, loss: 5.29, 8000 train 94.42%
+ep 1170, loss: 4.77, 8000 train 94.84%
+   Model saved to checkModel.pth
+ep 1171, loss: 4.55, 8000 train 94.97%
+ep 1172, loss: 4.89, 8000 train 94.76%
+ep 1173, loss: 5.21, 8000 train 94.56%
+ep 1174, loss: 4.75, 8000 train 95.11%
+ep 1175, loss: 5.13, 8000 train 94.74%
+ep 1176, loss: 4.65, 8000 train 95.11%
+ep 1177, loss: 4.85, 8000 train 94.81%
+ep 1178, loss: 5.03, 8000 train 94.61%
+ep 1179, loss: 4.74, 8000 train 94.96%
+ep 1180, loss: 4.44, 8000 train 95.46%
+   Model saved to checkModel.pth
+ep 1181, loss: 4.61, 8000 train 94.85%
+ep 1182, loss: 4.81, 8000 train 94.71%
+ep 1183, loss: 4.99, 8000 train 94.71%
+ep 1184, loss: 4.58, 8000 train 95.01%
+ep 1185, loss: 4.77, 8000 train 94.99%
+ep 1186, loss: 5.38, 8000 train 94.09%
+ep 1187, loss: 4.78, 8000 train 94.49%
+ep 1188, loss: 5.17, 8000 train 94.53%
+ep 1189, loss: 5.26, 8000 train 94.00%
+ep 1190, loss: 4.62, 8000 train 95.17%
+   Model saved to checkModel.pth
+ep 1191, loss: 4.88, 8000 train 94.77%
+ep 1192, loss: 4.43, 8000 train 95.06%
+ep 1193, loss: 4.20, 8000 train 95.34%
+ep 1194, loss: 4.83, 8000 train 94.88%
+ep 1195, loss: 5.01, 8000 train 94.65%
+ep 1196, loss: 4.56, 8000 train 94.92%
+ep 1197, loss: 5.05, 8000 train 94.55%
+ep 1198, loss: 4.77, 8000 train 94.90%
+ep 1199, loss: 4.92, 8000 train 94.71%
+ep 1200, loss: 4.93, 8000 train 94.88%
+   Model saved to checkModel.pth
+   Model saved to sub_1200_94.875.pth
+ep 1201, loss: 4.47, 8000 train 95.12%
+ep 1202, loss: 4.51, 8000 train 95.53%
+ep 1203, loss: 4.99, 8000 train 94.61%
+ep 1204, loss: 5.08, 8000 train 94.75%
+ep 1205, loss: 5.15, 8000 train 94.61%
+ep 1206, loss: 4.85, 8000 train 94.77%
+ep 1207, loss: 4.69, 8000 train 94.99%
+ep 1208, loss: 4.71, 8000 train 95.04%
+ep 1209, loss: 4.94, 8000 train 94.79%
+ep 1210, loss: 4.87, 8000 train 95.10%
+   Model saved to checkModel.pth
+ep 1211, loss: 4.59, 8000 train 95.31%
+ep 1212, loss: 4.80, 8000 train 94.95%
+ep 1213, loss: 4.91, 8000 train 94.95%
+ep 1214, loss: 4.98, 8000 train 94.61%
+ep 1215, loss: 5.02, 8000 train 94.50%
+ep 1216, loss: 4.84, 8000 train 94.79%
+ep 1217, loss: 4.95, 8000 train 94.64%
+ep 1218, loss: 4.68, 8000 train 95.05%
+ep 1219, loss: 4.90, 8000 train 95.20%
+ep 1220, loss: 5.16, 8000 train 94.45%
+   Model saved to checkModel.pth
+ep 1221, loss: 4.60, 8000 train 95.11%
+ep 1222, loss: 4.85, 8000 train 94.88%
+ep 1223, loss: 5.25, 8000 train 94.44%
+ep 1224, loss: 4.71, 8000 train 94.92%
+ep 1225, loss: 4.61, 8000 train 95.04%
+ep 1226, loss: 5.13, 8000 train 94.30%
+ep 1227, loss: 4.81, 8000 train 94.95%
+ep 1228, loss: 4.78, 8000 train 94.99%
+ep 1229, loss: 4.94, 8000 train 94.76%
+ep 1230, loss: 4.44, 8000 train 94.97%
+   Model saved to checkModel.pth
+ep 1231, loss: 4.63, 8000 train 95.10%
+ep 1232, loss: 4.82, 8000 train 94.55%
+ep 1233, loss: 4.92, 8000 train 94.80%
+ep 1234, loss: 4.40, 8000 train 95.47%
+ep 1235, loss: 4.86, 8000 train 94.91%
+ep 1236, loss: 4.80, 8000 train 94.92%
+ep 1237, loss: 4.57, 8000 train 95.23%
+ep 1238, loss: 4.71, 8000 train 94.99%
+ep 1239, loss: 5.14, 8000 train 94.69%
+ep 1240, loss: 4.73, 8000 train 94.94%
+   Model saved to checkModel.pth
+ep 1241, loss: 5.20, 8000 train 94.47%
+ep 1242, loss: 4.92, 8000 train 94.66%
+ep 1243, loss: 4.86, 8000 train 94.86%
+ep 1244, loss: 4.97, 8000 train 94.79%
+ep 1245, loss: 4.44, 8000 train 95.14%
+ep 1246, loss: 4.80, 8000 train 94.95%
+ep 1247, loss: 4.70, 8000 train 95.08%
+ep 1248, loss: 4.43, 8000 train 95.24%
+ep 1249, loss: 4.46, 8000 train 95.43%
+ep 1250, loss: 4.55, 8000 train 95.23%
+   Model saved to checkModel.pth
+   Model saved to sub_1250_95.22500000000001.pth
+ep 1251, loss: 4.73, 8000 train 94.96%
+ep 1252, loss: 5.11, 8000 train 94.58%
+ep 1253, loss: 4.83, 8000 train 94.77%
+ep 1254, loss: 4.92, 8000 train 94.94%
+ep 1255, loss: 4.90, 8000 train 94.40%
+ep 1256, loss: 4.41, 8000 train 95.26%
+ep 1257, loss: 4.91, 8000 train 94.73%
+ep 1258, loss: 4.56, 8000 train 95.05%
+ep 1259, loss: 4.80, 8000 train 95.14%
+ep 1260, loss: 4.92, 8000 train 94.80%
+   Model saved to checkModel.pth
+ep 1261, loss: 4.93, 8000 train 94.80%
+ep 1262, loss: 4.27, 8000 train 95.58%
+ep 1263, loss: 4.59, 8000 train 95.03%
+ep 1264, loss: 4.67, 8000 train 94.84%
+ep 1265, loss: 4.77, 8000 train 94.96%
+ep 1266, loss: 4.73, 8000 train 95.12%
+ep 1267, loss: 4.84, 8000 train 94.81%
+ep 1268, loss: 4.63, 8000 train 95.33%
+ep 1269, loss: 4.55, 8000 train 95.38%
+ep 1270, loss: 4.69, 8000 train 95.30%
+   Model saved to checkModel.pth
+ep 1271, loss: 5.06, 8000 train 94.65%
+ep 1272, loss: 4.52, 8000 train 95.43%
+ep 1273, loss: 4.79, 8000 train 95.21%
+ep 1274, loss: 4.32, 8000 train 95.31%
+ep 1275, loss: 4.30, 8000 train 95.39%
+ep 1276, loss: 4.76, 8000 train 94.81%
+ep 1277, loss: 4.67, 8000 train 95.11%
+ep 1278, loss: 4.57, 8000 train 94.90%
+ep 1279, loss: 4.41, 8000 train 95.20%
+ep 1280, loss: 4.81, 8000 train 94.76%
+   Model saved to checkModel.pth
+ep 1281, loss: 4.89, 8000 train 94.73%
+ep 1282, loss: 4.49, 8000 train 95.17%
+ep 1283, loss: 4.75, 8000 train 94.83%
+ep 1284, loss: 4.13, 8000 train 95.64%
+ep 1285, loss: 4.09, 8000 train 95.55%
+ep 1286, loss: 4.49, 8000 train 95.21%
+ep 1287, loss: 4.79, 8000 train 94.95%
+ep 1288, loss: 4.66, 8000 train 95.01%
+ep 1289, loss: 5.02, 8000 train 94.67%
+ep 1290, loss: 4.79, 8000 train 94.56%
+   Model saved to checkModel.pth
+ep 1291, loss: 4.77, 8000 train 95.29%
+ep 1292, loss: 4.81, 8000 train 95.03%
+ep 1293, loss: 4.67, 8000 train 95.03%
+ep 1294, loss: 4.42, 8000 train 95.28%
+ep 1295, loss: 4.77, 8000 train 94.96%
+ep 1296, loss: 4.83, 8000 train 94.94%
+ep 1297, loss: 4.55, 8000 train 94.90%
+ep 1298, loss: 4.55, 8000 train 94.89%
+ep 1299, loss: 4.32, 8000 train 95.45%
+ep 1300, loss: 4.35, 8000 train 95.31%
+   Model saved to checkModel.pth
+   Model saved to sub_1300_95.3125.pth
+ep 1301, loss: 4.60, 8000 train 94.90%
+ep 1302, loss: 4.81, 8000 train 94.92%
+ep 1303, loss: 4.59, 8000 train 95.12%
+ep 1304, loss: 4.64, 8000 train 95.20%
+ep 1305, loss: 4.44, 8000 train 95.51%
+ep 1306, loss: 4.71, 8000 train 95.19%
+ep 1307, loss: 4.74, 8000 train 94.90%
+ep 1308, loss: 4.40, 8000 train 95.49%
+ep 1309, loss: 4.46, 8000 train 95.24%
+ep 1310, loss: 4.55, 8000 train 95.08%
+   Model saved to checkModel.pth
+ep 1311, loss: 4.62, 8000 train 95.10%
+ep 1312, loss: 4.20, 8000 train 95.59%
+ep 1313, loss: 4.31, 8000 train 95.45%
+ep 1314, loss: 4.54, 8000 train 95.30%
+ep 1315, loss: 4.60, 8000 train 95.30%
+ep 1316, loss: 4.44, 8000 train 95.28%
+ep 1317, loss: 4.47, 8000 train 95.46%
+ep 1318, loss: 4.66, 8000 train 94.99%
+ep 1319, loss: 4.52, 8000 train 95.01%
+ep 1320, loss: 4.57, 8000 train 95.14%
+   Model saved to checkModel.pth
+ep 1321, loss: 4.70, 8000 train 95.10%
+ep 1322, loss: 4.54, 8000 train 94.96%
+ep 1323, loss: 4.41, 8000 train 95.30%
+ep 1324, loss: 4.58, 8000 train 95.35%
+ep 1325, loss: 4.71, 8000 train 95.08%
+ep 1326, loss: 4.75, 8000 train 94.83%
+ep 1327, loss: 4.42, 8000 train 95.01%
+ep 1328, loss: 4.63, 8000 train 94.95%
+ep 1329, loss: 4.20, 8000 train 95.40%
+ep 1330, loss: 4.45, 8000 train 95.44%
+   Model saved to checkModel.pth
+ep 1331, loss: 4.03, 8000 train 95.93%
+ep 1332, loss: 4.21, 8000 train 95.26%
+ep 1333, loss: 4.41, 8000 train 95.36%
+ep 1334, loss: 4.37, 8000 train 95.21%
+ep 1335, loss: 4.23, 8000 train 95.74%
+ep 1336, loss: 4.66, 8000 train 95.20%
+ep 1337, loss: 4.51, 8000 train 95.19%
+ep 1338, loss: 4.62, 8000 train 94.89%
+ep 1339, loss: 4.58, 8000 train 95.25%
+ep 1340, loss: 4.32, 8000 train 95.53%
+   Model saved to checkModel.pth
+ep 1341, loss: 4.78, 8000 train 94.97%
+ep 1342, loss: 4.60, 8000 train 95.16%
+ep 1343, loss: 4.08, 8000 train 95.80%
+ep 1344, loss: 4.21, 8000 train 95.50%
+ep 1345, loss: 4.25, 8000 train 95.34%
+ep 1346, loss: 4.31, 8000 train 95.38%
+ep 1347, loss: 4.30, 8000 train 95.51%
+ep 1348, loss: 4.54, 8000 train 95.26%
+ep 1349, loss: 4.59, 8000 train 95.21%
+ep 1350, loss: 4.70, 8000 train 94.90%
+   Model saved to checkModel.pth
+   Model saved to sub_1350_94.89999999999999.pth
+ep 1351, loss: 4.59, 8000 train 95.11%
+ep 1352, loss: 4.34, 8000 train 95.33%
+ep 1353, loss: 4.61, 8000 train 94.86%
+ep 1354, loss: 4.22, 8000 train 95.35%
+ep 1355, loss: 3.94, 8000 train 95.66%
+ep 1356, loss: 4.74, 8000 train 95.14%
+ep 1357, loss: 4.69, 8000 train 95.03%
+ep 1358, loss: 4.56, 8000 train 95.21%
+ep 1359, loss: 4.34, 8000 train 95.55%
+ep 1360, loss: 4.34, 8000 train 95.47%
+   Model saved to checkModel.pth
+ep 1361, loss: 4.29, 8000 train 95.14%
+ep 1362, loss: 4.64, 8000 train 95.14%
+ep 1363, loss: 4.87, 8000 train 94.85%
+ep 1364, loss: 3.97, 8000 train 95.73%
+ep 1365, loss: 4.26, 8000 train 95.60%
+ep 1366, loss: 4.22, 8000 train 95.69%
+ep 1367, loss: 4.67, 8000 train 95.04%
+ep 1368, loss: 4.20, 8000 train 95.55%
+ep 1369, loss: 4.30, 8000 train 95.24%
+ep 1370, loss: 4.50, 8000 train 95.20%
+   Model saved to checkModel.pth
+ep 1371, loss: 4.25, 8000 train 95.59%
+ep 1372, loss: 4.57, 8000 train 95.19%
+ep 1373, loss: 4.47, 8000 train 95.51%
+ep 1374, loss: 4.08, 8000 train 95.66%
+ep 1375, loss: 4.21, 8000 train 95.43%
+ep 1376, loss: 4.11, 8000 train 95.54%
+ep 1377, loss: 4.14, 8000 train 95.84%
+ep 1378, loss: 4.15, 8000 train 95.79%
+ep 1379, loss: 4.50, 8000 train 95.20%
+ep 1380, loss: 4.58, 8000 train 95.20%
+   Model saved to checkModel.pth
+ep 1381, loss: 4.45, 8000 train 95.21%
+ep 1382, loss: 4.85, 8000 train 95.20%
+ep 1383, loss: 4.74, 8000 train 95.17%
+ep 1384, loss: 4.31, 8000 train 95.34%
+ep 1385, loss: 3.98, 8000 train 95.61%
+ep 1386, loss: 4.23, 8000 train 95.33%
+ep 1387, loss: 4.05, 8000 train 95.74%
+ep 1388, loss: 4.34, 8000 train 95.58%
+ep 1389, loss: 4.32, 8000 train 95.33%
+ep 1390, loss: 4.22, 8000 train 95.56%
+   Model saved to checkModel.pth
+ep 1391, loss: 4.23, 8000 train 95.71%
+ep 1392, loss: 4.30, 8000 train 95.43%
+ep 1393, loss: 4.29, 8000 train 95.43%
+ep 1394, loss: 4.23, 8000 train 95.67%
+ep 1395, loss: 4.22, 8000 train 95.60%
+ep 1396, loss: 3.87, 8000 train 95.97%
+ep 1397, loss: 4.29, 8000 train 95.49%
+ep 1398, loss: 4.22, 8000 train 95.45%
+ep 1399, loss: 4.51, 8000 train 95.31%
+ep 1400, loss: 4.73, 8000 train 95.05%
+   Model saved to checkModel.pth
+   Model saved to sub_1400_95.05.pth
+ep 1401, loss: 4.90, 8000 train 94.86%
+ep 1402, loss: 4.35, 8000 train 95.19%
+ep 1403, loss: 3.78, 8000 train 95.81%
+ep 1404, loss: 3.97, 8000 train 95.69%
+ep 1405, loss: 4.09, 8000 train 95.69%
+ep 1406, loss: 4.01, 8000 train 95.78%
+ep 1407, loss: 4.09, 8000 train 95.76%
+ep 1408, loss: 3.89, 8000 train 95.85%
+ep 1409, loss: 3.87, 8000 train 96.01%
+ep 1410, loss: 4.25, 8000 train 95.41%
+   Model saved to checkModel.pth
+ep 1411, loss: 4.18, 8000 train 95.55%
+ep 1412, loss: 4.14, 8000 train 95.38%
+ep 1413, loss: 3.87, 8000 train 96.15%
+ep 1414, loss: 4.09, 8000 train 95.79%
+ep 1415, loss: 4.55, 8000 train 95.15%
+ep 1416, loss: 4.00, 8000 train 95.74%
+ep 1417, loss: 4.15, 8000 train 95.62%
+ep 1418, loss: 3.86, 8000 train 95.81%
+ep 1419, loss: 3.90, 8000 train 95.76%
+ep 1420, loss: 4.25, 8000 train 95.70%
+   Model saved to checkModel.pth
+ep 1421, loss: 4.29, 8000 train 95.49%
+ep 1422, loss: 4.84, 8000 train 94.90%
+ep 1423, loss: 4.41, 8000 train 95.29%
+ep 1424, loss: 4.30, 8000 train 95.40%
+ep 1425, loss: 3.77, 8000 train 96.09%
+ep 1426, loss: 3.92, 8000 train 95.93%
+ep 1427, loss: 4.50, 8000 train 95.36%
+ep 1428, loss: 4.09, 8000 train 95.55%
+ep 1429, loss: 4.22, 8000 train 95.66%
+ep 1430, loss: 4.04, 8000 train 95.75%
+   Model saved to checkModel.pth
+ep 1431, loss: 4.41, 8000 train 95.19%
+ep 1432, loss: 3.93, 8000 train 95.66%
+ep 1433, loss: 4.18, 8000 train 95.84%
+ep 1434, loss: 3.90, 8000 train 95.85%
+ep 1435, loss: 3.92, 8000 train 95.99%
+ep 1436, loss: 4.08, 8000 train 95.47%
+ep 1437, loss: 4.52, 8000 train 95.17%
+ep 1438, loss: 4.13, 8000 train 95.56%
+ep 1439, loss: 4.29, 8000 train 95.69%
+ep 1440, loss: 4.12, 8000 train 95.41%
+   Model saved to checkModel.pth
+ep 1441, loss: 4.40, 8000 train 95.40%
+ep 1442, loss: 4.37, 8000 train 95.28%
+ep 1443, loss: 4.20, 8000 train 95.53%
+ep 1444, loss: 4.53, 8000 train 95.47%
+ep 1445, loss: 4.26, 8000 train 95.76%
+ep 1446, loss: 4.25, 8000 train 95.44%
+ep 1447, loss: 4.14, 8000 train 95.38%
+ep 1448, loss: 4.37, 8000 train 95.21%
+ep 1449, loss: 4.53, 8000 train 95.17%
+ep 1450, loss: 4.34, 8000 train 95.33%
+   Model saved to checkModel.pth
+   Model saved to sub_1450_95.325.pth
+ep 1451, loss: 4.30, 8000 train 95.21%
+ep 1452, loss: 4.44, 8000 train 95.35%
+ep 1453, loss: 4.22, 8000 train 95.38%
+ep 1454, loss: 4.15, 8000 train 95.69%
+ep 1455, loss: 3.77, 8000 train 96.16%
+ep 1456, loss: 4.11, 8000 train 95.51%
+ep 1457, loss: 4.06, 8000 train 95.80%
+ep 1458, loss: 4.10, 8000 train 95.69%
+ep 1459, loss: 4.03, 8000 train 95.49%
+ep 1460, loss: 3.86, 8000 train 96.14%
+   Model saved to checkModel.pth
+ep 1461, loss: 4.03, 8000 train 95.81%
+ep 1462, loss: 4.42, 8000 train 95.17%
+ep 1463, loss: 4.20, 8000 train 95.43%
+ep 1464, loss: 3.96, 8000 train 95.58%
+ep 1465, loss: 4.15, 8000 train 95.73%
+ep 1466, loss: 4.06, 8000 train 95.74%
+ep 1467, loss: 4.09, 8000 train 95.54%
+ep 1468, loss: 4.05, 8000 train 95.70%
+ep 1469, loss: 4.00, 8000 train 95.69%
+ep 1470, loss: 4.10, 8000 train 95.62%
+   Model saved to checkModel.pth
+ep 1471, loss: 4.11, 8000 train 95.93%
+ep 1472, loss: 4.62, 8000 train 95.38%
+ep 1473, loss: 4.45, 8000 train 95.41%
+ep 1474, loss: 4.69, 8000 train 95.05%
+ep 1475, loss: 4.26, 8000 train 95.44%
+ep 1476, loss: 4.22, 8000 train 95.54%
+ep 1477, loss: 3.82, 8000 train 96.00%
+ep 1478, loss: 3.97, 8000 train 95.70%
+ep 1479, loss: 4.38, 8000 train 95.38%
+ep 1480, loss: 4.10, 8000 train 95.50%
+   Model saved to checkModel.pth
+ep 1481, loss: 4.06, 8000 train 95.99%
+ep 1482, loss: 3.96, 8000 train 95.99%
+ep 1483, loss: 4.32, 8000 train 95.53%
+ep 1484, loss: 3.71, 8000 train 95.91%
+ep 1485, loss: 4.42, 8000 train 95.47%
+ep 1486, loss: 3.99, 8000 train 95.99%
+ep 1487, loss: 3.95, 8000 train 95.70%
+ep 1488, loss: 3.92, 8000 train 95.66%
+ep 1489, loss: 4.04, 8000 train 95.75%
+ep 1490, loss: 4.13, 8000 train 95.71%
+   Model saved to checkModel.pth
+ep 1491, loss: 4.07, 8000 train 95.78%
+ep 1492, loss: 4.83, 8000 train 95.11%
+ep 1493, loss: 4.03, 8000 train 95.59%
+ep 1494, loss: 3.77, 8000 train 95.73%
+ep 1495, loss: 3.82, 8000 train 96.11%
+ep 1496, loss: 3.93, 8000 train 95.96%
+ep 1497, loss: 3.94, 8000 train 95.80%
+ep 1498, loss: 4.17, 8000 train 95.45%
+ep 1499, loss: 4.03, 8000 train 95.91%
+ep 1500, loss: 3.97, 8000 train 95.96%
+   Model saved to checkModel.pth
+   Model saved to sub_1500_95.96249999999999.pth
+ep 1501, loss: 3.66, 8000 train 95.88%
+ep 1502, loss: 3.89, 8000 train 95.73%
+ep 1503, loss: 4.01, 8000 train 95.88%
+ep 1504, loss: 3.94, 8000 train 96.11%
+ep 1505, loss: 4.09, 8000 train 95.58%
+ep 1506, loss: 3.73, 8000 train 95.89%
+ep 1507, loss: 3.90, 8000 train 96.04%
+ep 1508, loss: 3.64, 8000 train 96.08%
+ep 1509, loss: 3.72, 8000 train 95.80%
+ep 1510, loss: 3.70, 8000 train 95.89%
+   Model saved to checkModel.pth
+ep 1511, loss: 4.15, 8000 train 95.66%
+ep 1512, loss: 4.02, 8000 train 95.59%
+ep 1513, loss: 3.77, 8000 train 96.06%
+ep 1514, loss: 4.06, 8000 train 95.85%
+ep 1515, loss: 4.15, 8000 train 95.70%
+ep 1516, loss: 4.21, 8000 train 95.71%
+ep 1517, loss: 4.38, 8000 train 95.53%
+ep 1518, loss: 4.14, 8000 train 95.74%
+ep 1519, loss: 3.87, 8000 train 95.70%
+ep 1520, loss: 4.06, 8000 train 95.91%
+   Model saved to checkModel.pth
+ep 1521, loss: 3.50, 8000 train 96.19%
+ep 1522, loss: 3.90, 8000 train 95.69%
+ep 1523, loss: 3.90, 8000 train 95.74%
+ep 1524, loss: 3.99, 8000 train 95.76%
+ep 1525, loss: 4.33, 8000 train 95.43%
+ep 1526, loss: 4.45, 8000 train 95.46%
+ep 1527, loss: 4.01, 8000 train 95.78%
+ep 1528, loss: 4.08, 8000 train 95.73%
+ep 1529, loss: 3.96, 8000 train 95.99%
+ep 1530, loss: 4.20, 8000 train 95.64%
+   Model saved to checkModel.pth
+ep 1531, loss: 3.94, 8000 train 95.70%
+ep 1532, loss: 3.79, 8000 train 95.69%
+ep 1533, loss: 3.76, 8000 train 96.11%
+ep 1534, loss: 3.48, 8000 train 96.24%
+ep 1535, loss: 3.92, 8000 train 95.66%
+ep 1536, loss: 3.86, 8000 train 95.78%
+ep 1537, loss: 3.80, 8000 train 96.01%
+ep 1538, loss: 3.82, 8000 train 95.90%
+ep 1539, loss: 3.86, 8000 train 95.64%
+ep 1540, loss: 3.75, 8000 train 96.04%
+   Model saved to checkModel.pth
+ep 1541, loss: 3.75, 8000 train 95.99%
+ep 1542, loss: 3.86, 8000 train 95.93%
+ep 1543, loss: 3.70, 8000 train 96.08%
+ep 1544, loss: 3.90, 8000 train 95.54%
+ep 1545, loss: 4.04, 8000 train 95.75%
+ep 1546, loss: 3.95, 8000 train 95.83%
+ep 1547, loss: 3.94, 8000 train 95.76%
+ep 1548, loss: 3.88, 8000 train 95.67%
+ep 1549, loss: 3.64, 8000 train 96.08%
+ep 1550, loss: 3.82, 8000 train 95.90%
+   Model saved to checkModel.pth
+   Model saved to sub_1550_95.89999999999999.pth
+ep 1551, loss: 3.90, 8000 train 96.19%
+ep 1552, loss: 4.03, 8000 train 95.79%
+ep 1553, loss: 3.95, 8000 train 95.67%
+ep 1554, loss: 3.88, 8000 train 95.65%
+ep 1555, loss: 3.65, 8000 train 96.21%
+ep 1556, loss: 3.90, 8000 train 95.79%
+ep 1557, loss: 3.59, 8000 train 95.95%
+ep 1558, loss: 3.96, 8000 train 95.61%
+ep 1559, loss: 4.09, 8000 train 95.71%
+ep 1560, loss: 3.78, 8000 train 95.84%
+   Model saved to checkModel.pth
+ep 1561, loss: 4.07, 8000 train 95.58%
+ep 1562, loss: 4.04, 8000 train 95.59%
+ep 1563, loss: 4.08, 8000 train 95.78%
+ep 1564, loss: 3.87, 8000 train 95.76%
+ep 1565, loss: 3.97, 8000 train 95.89%
+ep 1566, loss: 3.92, 8000 train 95.66%
+ep 1567, loss: 3.91, 8000 train 95.73%
+ep 1568, loss: 3.67, 8000 train 95.94%
+ep 1569, loss: 3.72, 8000 train 96.16%
+ep 1570, loss: 3.65, 8000 train 96.14%
+   Model saved to checkModel.pth
+ep 1571, loss: 3.75, 8000 train 96.05%
+ep 1572, loss: 4.06, 8000 train 95.41%
+ep 1573, loss: 4.01, 8000 train 95.44%
+ep 1574, loss: 4.07, 8000 train 95.79%
+ep 1575, loss: 3.67, 8000 train 96.21%
+ep 1576, loss: 3.64, 8000 train 96.14%
+ep 1577, loss: 4.16, 8000 train 95.84%
+ep 1578, loss: 3.68, 8000 train 96.39%
+ep 1579, loss: 3.81, 8000 train 95.88%
+ep 1580, loss: 3.42, 8000 train 96.31%
+   Model saved to checkModel.pth
+ep 1581, loss: 3.51, 8000 train 96.33%
+ep 1582, loss: 3.66, 8000 train 95.89%
+ep 1583, loss: 3.80, 8000 train 96.01%
+ep 1584, loss: 3.77, 8000 train 95.83%
+ep 1585, loss: 3.84, 8000 train 95.80%
+ep 1586, loss: 3.49, 8000 train 96.23%
+ep 1587, loss: 3.61, 8000 train 96.21%
+ep 1588, loss: 4.01, 8000 train 95.85%
+ep 1589, loss: 3.67, 8000 train 95.96%
+ep 1590, loss: 3.42, 8000 train 96.33%
+   Model saved to checkModel.pth
+ep 1591, loss: 3.92, 8000 train 95.81%
+ep 1592, loss: 3.61, 8000 train 96.10%
+ep 1593, loss: 4.02, 8000 train 95.95%
+ep 1594, loss: 4.15, 8000 train 95.53%
+ep 1595, loss: 4.13, 8000 train 95.90%
+ep 1596, loss: 3.33, 8000 train 96.31%
+ep 1597, loss: 3.72, 8000 train 96.05%
+ep 1598, loss: 3.24, 8000 train 96.41%
+ep 1599, loss: 3.61, 8000 train 96.24%
+ep 1600, loss: 3.92, 8000 train 95.80%
+   Model saved to checkModel.pth
+   Model saved to sub_1600_95.8.pth
+   Model saved to sub.pth
