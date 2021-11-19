@@ -9,7 +9,9 @@ Abrar Amin   z5018626
 Demiao Chen  z5289988
 group id     g025514
 
-submssion accuracy: 92.25%
+submssion accuracy: 92.5%
+
+Date: Nov.19 2021
 """
 import torch
 import torch.nn as nn
@@ -23,6 +25,8 @@ import torchvision.transforms as transforms
 
 Briefly describe how your program works, and explain any design and training
 decisions you made along the way.
+
+    See hw2.pdf
 """
 
 ############################################################################
@@ -32,7 +36,6 @@ def transform(mode):
     """
     Called when loading the data. Visit this URL for more information:
     https://pytorch.org/vision/stable/transforms.html
-    You may specify different transforms for training and testing
     """
     # Data Augmentation
     if mode == 'train':
@@ -59,7 +62,6 @@ def transform(mode):
                 transforms.ToTensor()
             ]
         )
-
 
 ############################################################################
 ######   Define the Module to process the images and produce labels   ######
@@ -160,14 +162,9 @@ learning_rate = 0.0005
 optimizer = optim.Adam(net.parameters(), lr=learning_rate)
 loss_func = nn.CrossEntropyLoss()
 
-
 ############################################################################
 ######  Custom weight initialization and lr scheduling are optional   ######
 ############################################################################
-
-# Normally, the default weight initialization and fixed learing rate
-# should work fine. But, we have made it possible for you to define
-# your own custom weight initialization and lr scheduler, if you wish.
 def weights_init(m):
     return
 
@@ -179,4 +176,5 @@ scheduler = None
 dataset = "./data"
 train_val_split = 1  # 1 for submssion, 0.8 for testing to select the best network
 batch_size = 256 
-epochs = 1600
+epochs = 1500  # training and validation accuracy converge around 400 epochs
+               # later epochs only slightly improved the testing accuracy
