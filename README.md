@@ -2,6 +2,18 @@
 
 A Pytorch neural networks model for cat breed classification
 
+## Term 3, 2021
+
+### Project 2 - Cat Breed Classification
+
+### Submitted by
+
+* Abrar Amin (z5018626)
+* Demiao Chen (z5289988)
+* Group ID - g025514
+
+Final marks: 30/30. Ranked the **1st** accurary group among the UNSW COMP9444 21T3 cohort.
+
 * description: https://www.cse.unsw.edu.au/~cs9444/21T3/hw2/
 
 * data.zip: https://www.cse.unsw.edu.au/~cs9444/21T3/hw2/hw2.zip
@@ -21,15 +33,7 @@ source ./venv/bin/activate
 pip install -r ./requirements.txt
 ```
 
-## Term 3, 2021
 
-### Project 2 - Cat Breed Classification
-
-### Submitted by
-
-* Abrar Amin (z5018626)
-* Demiao Chen (z5289988)
-* Group ID - g025514
 
 ### 1 Choice of architecture
 
